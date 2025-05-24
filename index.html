@@ -14,12 +14,23 @@
   </head>
   <body>
     <div class="app-container">
+      <!-- Header  -->
       <header class="app-header">
+        <img
+              src="image.png"
+              alt="Logotipo do Oficial Técnico Triathlon"
+              height="50"
+              width="70"
+              class="app-logo"
+            />
         <h1>Oficial Técnico Triathlon</h1>
         <a href="dashboard.html" class="dashboard-link">Relatório</a>
       </header>
 
       <div class="tabs-container">
+        <!-- Navegação de Abas -->
+
+        <!-- Front Home -->
         <div class="tab active" id="home">
           <div class="home-content">
             <img
@@ -44,7 +55,7 @@
         <!-- Pré-Prova -->
         <div class="tab" id="pre-prova">
           <h2>Pré-Prova / Registro</h2>
-          <p>Informações e verificações antes do início da Natação.</p>
+          <p>Informações e verificações antes do início da Prova.</p>
 
           <div class="section">
             <h3>Checagem de Atletas</h3>
@@ -60,58 +71,71 @@
           </div>
 
           <div class="section">
-            <h3>Verificações de Normas</h3>
+            <h3>Normas</h3>
 
             <div class="norm-checker">
-              <h4>Transição Justa</h4>
-              <input type="checkbox" id="transicaoJustaCheck" />
-              <label for="transicaoJustaCheck">Verificado e Conforme</label>
+              <h4>Transição</h4>
+              <input type="checkbox" id="transicaoCheck" />
+              <label for="transicaoCheck">Conformidade</label>
               <textarea
-                id="transicaoJustaObs"
-                placeholder="Observações sobre Transição Justa..."
+                id="transicaoObs"
+                placeholder="Observações sobre Transição..."
                 rows="2"
               ></textarea>
             </div>
 
             <div class="norm-checker">
-              <h4>Número de Bike Racks e Caixas</h4>
+              <h4>Problemas Numeração Racks e Caixas</h4>
+              
               <input
                 type="text"
                 id="numBikeRacksInput"
                 placeholder="Nº Racks"
               />
-              <input type="text" id="numCaixasInput" placeholder="Nº Caixas" />
-              <button onclick="registrarRacksCaixas()">Registrar</button>
-              <p id="racksCaixasInfo"></p>
+              
+              <button onclick="registrarRacks()">Registrar</button>
+              <p id="racksInfo"></p>
+              
+              <input 
+                type="text" 
+                id="numCaixasInput" 
+                placeholder="Nº Caixas" 
+              />
+              
+              <button onclick="registrarCaixas()">Registrar</button>
+              <p id="caixasInfo"></p>
+
               <textarea
                 id="bikeRacksObs"
                 placeholder="Observações sobre racks/caixas..."
                 rows="2"
               ></textarea>
             </div>
+          
 
             <div class="norm-checker">
-              <h4>Bike Rack para Triatletas</h4>
+              <h4>Problemas nos Bike Racks Para Atletas</h4>
               <input type="checkbox" id="bikeRackTriatletasCheck" />
-              <label for="bikeRackTriatletasCheck">Verificado e Conforme</label>
+              <label for="bikeRackTriatletasCheck">Conformidade</label>
               <textarea
                 id="bikeRackTriatletasObs"
                 placeholder="Observações sobre bike rack para triatletas..."
                 rows="2"
               ></textarea>
             </div>
+          </div>
 
             <div class="norm-checker">
               <h4>Área de Monte e Desmonte</h4>
               <input type="checkbox" id="areaMonteDesmonteCheck" />
-              <label for="areaMonteDesmonteCheck">Verificado e Conforme</label>
+              <label for="areaMonteDesmonteCheck">Conformidade</label>
               <textarea
                 id="areaMonteDesmonteObs"
                 placeholder="Observações sobre área de monte/desmonte..."
                 rows="2"
               ></textarea>
             </div>
-
+          
             <div class="norm-checker">
               <h4>Horário de Bike Check-in Compatível com Atletas</h4>
               <input
@@ -132,7 +156,7 @@
                 rows="2"
               ></textarea>
             </div>
-          </div>
+          
 
           <div class="section">
             <h3>Informações Adicionais</h3>
@@ -1081,6 +1105,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <nav class="tab-navigation">

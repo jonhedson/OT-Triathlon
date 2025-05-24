@@ -1,0 +1,137 @@
+/* Estilos específicos do Dashboard */
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex; /* Mantém flex para o app-container centralizar */
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        overflow: hidden; /* Mantém hidden para o fluxo normal do app */
+      }
+
+      .dashboard-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        /* Remover qualquer altura fixa ou min-height que possa estar causando o problema */
+        min-height: 0; /* Garante que o min-height não force uma altura mínima se não houver conteúdo */
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        /* Remova overflow: hidden se estiver presente aqui */
+      }
+
+      .dashboard-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .report-section {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+
+      .report-section h2 {
+        color: #007bff;
+        font-size: 1.6em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+
+      .report-section h3 {
+        color: #555;
+        font-size: 1.2em;
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+
+      .report-section ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 10px;
+      }
+
+      .report-section ul li {
+        background-color: #e9ecef;
+        padding: 8px 12px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        font-size: 0.95em;
+      }
+
+      .report-section p {
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .report-section textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        min-height: 80px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9em;
+        background-color: #fff;
+        resize: vertical;
+      }
+
+      .back-to-app {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 1.1em;
+      }
+
+      .back-to-app a {
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .back-to-app a:hover {
+        background-color: #5a6268;
+      }
+
+      html.dashboard-page body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        height: auto;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 0;
+      }
+
+      /* Estilo para o conteúdo da "aba" única do dashboard */
+      .single-tab-content {
+        /* Herda a maioria dos estilos de .tab */
+        position: relative; /* Ou remova se não for necessário para rolagem */
+        display: block !important; /* Força a exibição para a página de dashboard */
+        overflow-y: auto; /* Permite rolagem vertical dentro desta "aba" */
+        padding-bottom: 20px; /* Adiciona um padding no final para não "cortar" o último conteúdo */
+      }
+
+      @media (min-width: 768px) {
+        .app-container {
+          border-radius: 8px;
+          /* Remover a altura fixa ou ajustar para que permita o conteúdo definir a altura */
+          /* height: 90vh; REMOVER ESTA LINHA */
+          height: auto; /* Permite que a altura seja definida pelo conteúdo */
+          max-height: 90vh; /* Limita a altura máxima para desktops, adicionando rolagem no container se necessário */
+          overflow-y: auto; /* Permite rolagem no app-container para desktop */
+        }
+      }

@@ -11,6 +11,7 @@ body {
     overflow: hidden; /* Evita rolagem horizontal excessiva */
 }
 
+/* Contêiner principal do aplicativo */
 .app-container {
     width: 100%;
     max-width: 600px; /* Limita a largura em telas maiores, ideal para mobile-first */
@@ -22,6 +23,7 @@ body {
     overflow: hidden; /* Importante para a transição das abas */
 }
 
+/* Header do aplicativo */
 .app-header {
     background-color: #333;
     color: white;
@@ -47,9 +49,11 @@ h1, h2, h3, h4, h5, h6, .app-header {
     color: #333; /* Cor padrão para títulos, ajuste se necessário */
 }
 
+/* Link para o dashboard */
 .dashboard-link {
     background-color: #00bcd4; /* Cor para o botão de relatório */
     color: white;
+    margin: 0 20px; /* Margem entre o título e o link */
     padding: 8px 15px;
     border-radius: 5px;
     text-decoration: none; /* Remove sublinhado */
@@ -121,7 +125,7 @@ h1, h2, h3, h4, h5, h6, .app-header {
 }
 
 /* Media Queries para Telas Maiores (Opcional, mas boa prática) */
-@media (min-width: 768px) {
+@media (min-width: 600px) {
     .app-container {
         height: 90vh; /* Reduz um pouco a altura para não ocupar a tela toda no desktop */
         border-radius: 8px;
@@ -148,7 +152,8 @@ h1, h2, h3, h4, h5, h6, .app-header {
 .section input[type="text"] {
     width: calc(100% - 80px); /* Ajusta a largura para caber o botão */
     padding: 8px;
-    margin-right: 5px;
+    margin-right: 10px; /* Espaço entre o input e o botão */
+    margin-bottom: 10px; /* Espaço entre o input e a lista */
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; /* Inclui padding na largura */
@@ -156,6 +161,7 @@ h1, h2, h3, h4, h5, h6, .app-header {
 
 .section button {
     padding: 8px 12px;
+    
     background-color: #28a745; /* Cor verde para adicionar */
     color: white;
     border: none;
@@ -241,7 +247,7 @@ h1, h2, h3, h4, h5, h6, .app-header {
 }
 
 .app-logo {
-    max-width: 480px; /* Define um tamanho máximo para o logotipo */
+    max-width: 200px; /* Define um tamanho máximo para o logotipo */
     height: auto;
     margin-bottom: 10px;
     border-radius: 8px; /* Opcional: bordas arredondadas para o logo */

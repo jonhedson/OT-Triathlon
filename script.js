@@ -44,10 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let startX = 0;
   let endX = 0;
 
+  // Adiciona eventos de toque para dispositivos móveis
   tabsContainer.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   });
 
+  // Detecta o fim do toque
   tabsContainer.addEventListener("touchend", (e) => {
     endX = e.changedTouches[0].clientX;
 
@@ -71,8 +73,63 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+  // ...existing code...
 
-  // Funções para a aba de Natação
+  // Funções para a aba de Pré-Prova
+
+  const adicionarAtletaChecado = () => {
+    const input = document.getElementById("atletaChecagemInput");
+    const lista = document.getElementById("listaAtletasChecados");
+    const atleta = input.value.trim();
+
+    if (atleta) {
+      adicionarAtletaALista(lista, atleta);
+      input.value = ""; // Limpa o campo
+    } else {
+      alert("Por favor, digite o número do atleta.");
+    }
+  };
+
+  // Função para registrar número de racks e caixas
+  const registrarRacks = () => {
+    const numRacksInput = document.getElementById("numBikeRacksInput");
+    
+    const info = document.getElementById("racksInfo");
+
+    const numRacks = numRacksInput.value.trim();
+
+
+    if (numRacks) {
+      info.textContent = `Racks: ${numRacks}`;
+      numRacksInput.value = "";
+      
+    } else {
+      alert("Por favor, preencha o número de racks e caixas.");
+    }
+  };
+
+   // Função para registrar número de racks e caixas
+  const registrarCaixas = () => {
+    
+    const numCaixasInput = document.getElementById("numCaixasInput");
+    const info = document.getElementById("caixasInfo");
+
+    const numCaixas = numCaixasInput.value.trim();
+
+    if ( numCaixas) {
+      info.textContent = `Caixas: ${numCaixas}`;
+      numCaixasInput.value = "";
+    } else {
+      alert("Por favor, preencha o número de racks e caixas.");
+    }
+  };
+
+  // Torna as funções globais para uso no HTML
+  window.adicionarAtletaChecado = adicionarAtletaChecado;
+  window.registrarRacks = registrarRacks;
+  window.registrarCaixas = registrarCaixas;
+
+  // Funções para a aba de Natação //
   const registrarPrimeiroAtletaNatacao = () => {
     const input = document.getElementById("primeiroAtletaNatacao");
     const info = document.getElementById("primeiroAtletaNatacaoInfo");
@@ -193,6 +250,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Exibe a aba inicial ao carregar a página
   showTab(currentTabIndex);
-
-  
 });
