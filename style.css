@@ -240,9 +240,9 @@ h1, h2, h3, h4, h5, h6, .app-header {
 }
 
 .app-logo {
-    max-width: 150px; /* Define um tamanho máximo para o logotipo */
+    max-width: 480px; /* Define um tamanho máximo para o logotipo */
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 8px; /* Opcional: bordas arredondadas para o logo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
     /* Adições para centralizar a imagem */
