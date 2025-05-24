@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arbitragem Triathlon</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      
+        <header class="app-header">
+        <h1>Arbitragem Triathlon</h1>
+      </header>
+
+      <div class="tabs-container">
+        <div class="tab active" id="home">
+          <div class="home-content">
+            <img
+              src="image.png"
+              alt="Logotipo da Arbitragem"
+              height="200"
+              width="280"
+              class="app-logo"
+            />
+            <h2>Sistema de Arbitragem de Triathlon</h2>
+            <p class="introduction-text">
+              Este aplicativo foi desenvolvido para auxiliar a equipe de
+              arbitragem no acompanhamento de todas as etapas de uma prova de
+              Triathlon. Utilize as abas de navegação para registrar informações
+              cruciais, aplicar punições e monitorar o progresso dos atletas de
+              forma eficiente e precisa.
+            </p>
+            <p>Inicie selecionando a etapa de prova desejada.</p>
+          </div>
+        </div>
+
+        <div class="tab" id="pre-prova">
+        <h2>Pré-Prova / Registro</h2>
+        <p>Informações e verificações antes do início da Natação.</p>
+
+        <div class="section">
+          <h3>Checagem de Atletas</h3>
+          <input
+            type="text"
+            id="atletaChecagemInput"
+            placeholder="Número do Atleta"
+          />
+          <button onclick="adicionarAtletaChecado()">Registrar Checagem</button>
+          <ul id="listaAtletasChecados" class="athlete-list"></ul>
+        </div>
+
+        <div class="section">
+          <h3>Verificações de Normas</h3>
+
+          <div class="norm-checker">
+            <h4>Transição Justa</h4>
+            <input type="checkbox" id="transicaoJustaCheck" />
+            <label for="transicaoJustaCheck">Verificado e Conforme</label>
+            <textarea
+              id="transicaoJustaObs"
+              placeholder="Observações sobre Transição Justa..."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="norm-checker">
+            <h4>Número de Bike Racks e Caixas</h4>
+            <input type="text" id="numBikeRacksInput" placeholder="Nº Racks" />
+            <input type="text" id="numCaixasInput" placeholder="Nº Caixas" />
+            <button onclick="registrarRacksCaixas()">Registrar</button>
+            <p id="racksCaixasInfo"></p>
+            <textarea
+              id="bikeRacksObs"
+              placeholder="Observações sobre racks/caixas..."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="norm-checker">
+            <h4>Bike Rack para Triatletas</h4>
+            <input type="checkbox" id="bikeRackTriatletasCheck" />
+            <label for="bikeRackTriatletasCheck">Verificado e Conforme</label>
+            <textarea
+              id="bikeRackTriatletasObs"
+              placeholder="Observações sobre bike rack para triatletas..."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="norm-checker">
+            <h4>Área de Monte e Desmonte</h4>
+            <input type="checkbox" id="areaMonteDesmonteCheck" />
+            <label for="areaMonteDesmonteCheck">Verificado e Conforme</label>
+            <textarea
+              id="areaMonteDesmonteObs"
+              placeholder="Observações sobre área de monte/desmonte..."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="norm-checker">
+            <h4>Horário de Bike Check-in Compatível com Atletas</h4>
+            <input
+              type="text"
+              id="checkinHorarioInput"
+              placeholder="Horário (ex: 08:00-09:00)"
+            />
+            <input
+              type="text"
+              id="totalAtletasCheckinInput"
+              placeholder="Total de Atletas"
+            />
+            <button onclick="registrarCheckinHorario()">Registrar</button>
+            <p id="checkinHorarioInfo"></p>
+            <textarea
+              id="checkinHorarioObs"
+              placeholder="Observações sobre horário de check-in..."
+              rows="2"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Informações Adicionais</h3>
+          <textarea
+            placeholder="Observações importantes antes da prova..."
+            rows="4"
+            id="infoAdicionalPreProva"
+          ></textarea>
+        </div>
+        </div>
+        
+
+        <div class="tab" id="natacao">
+          <h2>Natação</h2>
+          <p>Acompanhamento da etapa de Natação.</p>
+
+          <div class="section">
+            <h3>Primeiro Atleta a Sair da Água</h3>
+            <input
+              type="text"
+              id="primeiroAtletaNatacao"
+              placeholder="Número do Atleta"
+            />
+            <button onclick="registrarPrimeiroAtletaNatacao()">
+              Registrar
+            </button>
+            <p id="primeiroAtletaNatacaoInfo"></p>
+          </div>
+
+          <div class="section">
+            <h3>Último Atleta a Sair da Água</h3>
+            <input
+              type="text"
+              id="ultimoAtletaNatacao"
+              placeholder="Número do Atleta"
+            />
+            <button onclick="registrarUltimoAtletaNatacao()">Registrar</button>
+            <p id="ultimoAtletaNatacaoInfo"></p>
+          </div>
+
+          <div class="section">
+            <h3>Atletas que Desistiram</h3>
+            <input
+              type="text"
+              id="desistenteNatacaoInput"
+              placeholder="Número do Atleta"
+            />
+            <button onclick="adicionarDesistenteNatacao()">
+              Adicionar Desistente
+            </button>
+            <ul id="listaDesistentesNatacao" class="athlete-list"></ul>
+          </div>
+
+          <div class="section">
+            <h3>Punições</h3>
+            <div class="punishment-option">
+              <h4>Corte de Boia</h4>
+              <input
+                type="text"
+                class="punishment-input"
+                data-punishment="corteBoia"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarPunicao('corteBoia')">Aplicar</button>
+              <ul id="listaCorteBoia" class="athlete-list"></ul>
+            </div>
+            <div class="punishment-option">
+              <h4>Largada Falsa</h4>
+              <input
+                type="text"
+                class="punishment-input"
+                data-punishment="largadaFalsa"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarPunicao('largadaFalsa')">
+                Aplicar
+              </button>
+              <ul id="listaLargadaFalsa" class="athlete-list"></ul>
+            </div>
+            <div class="punishment-option">
+              <h4>Contato</h4>
+              <input
+                type="text"
+                class="punishment-input"
+                data-punishment="contato"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarPunicao('contato')">Aplicar</button>
+              <ul id="listaContato" class="athlete-list"></ul>
+            </div>
+            <div class="punishment-option">
+              <h4>Ajuda Externa</h4>
+              <input
+                type="text"
+                class="punishment-input"
+                data-punishment="ajudaExterna"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarPunicao('ajudaExterna')">
+                Aplicar
+              </button>
+              <ul id="listaAjudaExterna" class="athlete-list"></ul>
+            </div>
+            <div class="punishment-option">
+              <h4>Descarte</h4>
+              <input
+                type="text"
+                class="punishment-input"
+                data-punishment="descarte"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarPunicao('descarte')">Aplicar</button>
+              <ul id="listaDescarte" class="athlete-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab" id="transicao-i">
+          <h2>Transição I</h2>
+          <p>Acompanhamento da Transição I (Natação para Ciclismo).</p>
+        </div>
+        <div class="tab" id="ciclismo">
+          <h2>Ciclismo</h2>
+          <p>Acompanhamento da etapa de Ciclismo.</p>
+        </div>
+        <div class="tab" id="transicao-ii">
+          <h2>Transição II</h2>
+          <p>Acompanhamento da Transição II (Ciclismo para Corrida).</p>
+        </div>
+        <div class="tab" id="corrida">
+          <h2>Corrida</h2>
+          <p>Acompanhamento da etapa de Corrida.</p>
+        </div>
+      </div>
+
+      <nav class="tab-navigation">
+        <button id="prevBtn">&lt; Anterior</button>
+        <button id="nextBtn">Próxima &gt;</button>
+      </nav>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

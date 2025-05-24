@@ -1,0 +1,304 @@
+/* Estilos Gerais e Mobile-First */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo para simular um app */
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+    overflow: hidden; /* Evita rolagem horizontal excessiva */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px; /* Limita a largura em telas maiores, ideal para mobile-first */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa a altura total da viewport em dispositivos móveis */
+    overflow: hidden; /* Importante para a transição das abas */
+}
+
+.app-header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Garante que o cabeçalho fique acima das abas */
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Estilos para as Abas */
+.tabs-container {
+    display: flex;
+    width: 100%; /* Ocupa a largura total do app-container */
+    flex-grow: 1; /* Permite que o contêiner das abas preencha o espaço restante */
+    overflow: hidden; /* Essencial para a navegação por deslize */
+    position: relative; /* Para posicionar as abas internamente */
+}
+
+.tab {
+    min-width: 100%; /* Cada aba ocupa 100% da largura do tabs-container */
+    flex-shrink: 0; /* Impede que as abas encolham */
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding na largura total */
+    display: none; /* Por padrão, todas as abas ficam ocultas */
+    background-color: #fff;
+    overflow-y: auto; /* Permite rolagem vertical dentro da aba se o conteúdo for grande */
+    transition: transform 0.3s ease-in-out; /* Transição suave para o deslize */
+    position: absolute; /* Posicionamento absoluto para sobrepor as abas */
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.tab.active {
+    display: block; /* A aba ativa é exibida */
+}
+
+/* Estilos de Navegação (Botões) */
+.tab-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.tab-navigation button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+.tab-navigation button:hover {
+    background-color: #0056b3;
+}
+
+.tab-navigation button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Media Queries para Telas Maiores (Opcional, mas boa prática) */
+@media (min-width: 768px) {
+    .app-container {
+        height: 90vh; /* Reduz um pouco a altura para não ocupar a tela toda no desktop */
+        border-radius: 8px;
+    }
+}
+
+/* Adicione estas regras ao seu arquivo style.css */
+
+.section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.section input[type="text"] {
+    width: calc(100% - 80px); /* Ajusta a largura para caber o botão */
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Inclui padding na largura */
+}
+
+.section button {
+    padding: 8px 12px;
+    background-color: #28a745; /* Cor verde para adicionar */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.section button:hover {
+    background-color: #218838;
+}
+
+.section button:active {
+    background-color: #1e7e34;
+}
+
+.athlete-list {
+    list-style: none; /* Remove marcadores de lista padrão */
+    padding: 0;
+    margin-top: 10px;
+    max-height: 150px; /* Limita a altura da lista para evitar que ocupe muito espaço */
+    overflow-y: auto; /* Adiciona barra de rolagem se a lista for muito grande */
+    border: 1px dashed #eee; /* Borda tracejada para delimitar a lista */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.athlete-list li {
+    background-color: #e2f0cb; /* Cor de fundo para cada item da lista */
+    margin-bottom: 5px;
+    padding: 8px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.athlete-list li .remove-btn {
+    background-color: #dc3545; /* Cor vermelha para o botão de remover */
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.2s ease;
+}
+
+.athlete-list li .remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Estilos específicos para as punições */
+.punishment-option {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fefefe;
+}
+
+.punishment-option h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.punishment-option .punishment-input {
+    width: calc(100% - 80px); /* Ajusta a largura */
+}
+
+/* Estilos de botão para punição */
+.punishment-option button {
+    background-color: #ffc107; /* Cor amarela para aplicar punição */
+    color: #333; /* Texto escuro para contrastar com amarelo */
+}
+
+.punishment-option button:hover {
+    background-color: #e0a800;
+}
+
+.app-logo {
+    max-width: 150px; /* Define um tamanho máximo para o logotipo */
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Opcional: bordas arredondadas para o logo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    /* Adições para centralizar a imagem */
+    display: block; /* Transforma a imagem em um elemento de bloco */
+    margin-left: auto; /* Margem automática à esquerda */
+    margin-right: auto; /* Margem automática à direita */
+}
+
+/* Adicione estas regras ao seu arquivo style.css */
+
+.norm-checker {
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.norm-checker h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 1.1em;
+}
+
+.norm-checker input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2); /* Aumenta um pouco o tamanho do checkbox */
+    vertical-align: middle; /* Alinha o checkbox com o texto */
+}
+
+.norm-checker label {
+    font-weight: bold;
+    color: #333;
+    vertical-align: middle;
+    margin-right: 15px; /* Espaço entre o label e o próximo item */
+}
+
+.norm-checker input[type="text"] {
+    width: calc(50% - 10px); /* Para dois inputs lado a lado */
+    max-width: 150px; /* Limita largura em telas maiores */
+    display: inline-block; /* Permite que fiquem lado a lado */
+    margin-right: 8px;
+    margin-bottom: 5px; /* Pequena margem para separar do botão */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.norm-checker textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+    min-height: 40px; /* Altura mínima para a textarea */
+}
+
+/* Ajuste para o botão dentro do norm-checker */
+.norm-checker button {
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: #007bff; /* Azul para ações gerais */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.norm-checker button:hover {
+    background-color: #0056b3;
+}
+
+.norm-checker p {
+    margin-top: 8px;
+    font-size: 0.95em;
+    color: #666;
+}
