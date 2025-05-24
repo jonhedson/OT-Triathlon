@@ -243,14 +243,46 @@
           </div>
 
           <div class="report-section" id="relatorio-transicao-i">
-            <h3>Transição I</h3>
+            <h2>Transição I</h2>
             <p>Dados da Transição I aparecerão aqui.</p>
-          </div>
+        </div>
 
-          <div class="report-section" id="relatorio-ciclismo">
-            <h3>Ciclismo</h3>
-            <p>Dados do Ciclismo aparecerão aqui.</p>
-          </div>
+        <div class="report-section" id="relatorio-ciclismo">
+            <h2>Ciclismo</h2>
+            <h3>Verificação da Prova</h3>
+            <p><strong>Percurso:</strong> <span id="report-ciclismo-percurso"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-percurso-obs" readonly></textarea></p>
+            <p><strong>Segurança no Percurso:</strong> <span id="report-ciclismo-seguranca"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-seguranca-obs" readonly></textarea></p>
+            <p><strong>Controle de Trânsito:</strong> <span id="report-ciclismo-controle-transito"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-controle-transito-obs" readonly></textarea></p>
+            <p><strong>Trânsito:</strong> <span id="report-ciclismo-transito"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-transito-obs" readonly></textarea></p>
+            <p><strong>Retornos:</strong> <span id="report-ciclismo-retornos"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-retornos-obs" readonly></textarea></p>
+            <p><strong>Ambulâncias:</strong> <span id="report-ciclismo-ambulancias"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-ambulancias-obs" readonly></textarea></p>
+            <p><strong>Motos:</strong> <span id="report-ciclismo-motos"></span></p>
+            <p><strong>Observações:</strong> <textarea id="report-ciclismo-motos-obs" readonly></textarea></p>
+
+            <h3>Controle de Prova</h3>
+            <p><strong>Primeiro Atleta a Iniciar:</strong> <span id="report-primeiro-atleta-ciclismo"></span></p>
+            <p><strong>Último Atleta a Finalizar:</strong> <span id="report-ultimo-atleta-ciclismo"></span></p>
+            <h4>Atletas que Desistiram</h4>
+            <ul id="report-desistentes-ciclismo"></ul>
+            <h4>Punições Gerais</h4>
+            <ul id="report-punicoes-ciclismo"></ul>
+
+            <h3>Punições Específicas</h3>
+            <h4>Vácuo (Cartão Azul)</h4>
+            <ul id="report-vacuo"></ul>
+            <h4>Andar Clipado (Cartão Amarelo)</h4>
+            <ul id="report-andar-clipado"></ul>
+            <h4>Descarte (Cartão Amarelo)</h4>
+            <ul id="report-descarte-ciclismo"></ul>
+            <h4>Ajuda Externa</h4>
+            <ul id="report-ajuda-externa-ciclismo"></ul>
+        </div>
 
           <div class="report-section" id="relatorio-transicao-ii">
             <h3>Transição II</h3>
@@ -258,8 +290,80 @@
           </div>
 
           <div class="report-section" id="relatorio-corrida">
-            <h3>Corrida</h3>
-            <p>Dados da Corrida aparecerão aqui.</p>
+            <h2>Corrida</h2>
+            <h3>Verificação da Prova</h3>
+            <p>
+              <strong>Percurso:</strong>
+              <span id="report-corrida-percurso"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-percurso-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Segurança no Percurso:</strong>
+              <span id="report-corrida-seguranca"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-seguranca-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Postos de Hidratação:</strong>
+              <span id="report-corrida-hidratacao"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-hidratacao-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Postos de Alimentação:</strong>
+              <span id="report-corrida-alimentacao"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-alimentacao-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Retornos:</strong>
+              <span id="report-corrida-retornos"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-retornos-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Ambulâncias:</strong>
+              <span id="report-corrida-ambulancias"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-corrida-ambulancias-obs" readonly></textarea>
+            </p>
+
+            <h3>Controle de Prova</h3>
+            <p>
+              <strong>Primeiro Atleta a Iniciar:</strong>
+              <span id="report-primeiro-atleta-corrida"></span>
+            </p>
+            <p>
+              <strong>Último Atleta a Finalizar:</strong>
+              <span id="report-ultimo-atleta-corrida"></span>
+            </p>
+            <h4>Atletas que Desistiram</h4>
+            <ul id="report-desistentes-corrida"></ul>
+            <h4>Punições Gerais</h4>
+            <ul id="report-punicoes-corrida"></ul>
+
+            <h3>Punições Específicas</h3>
+            <h4>Vácuo (fora do Ciclismo)</h4>
+            <ul id="report-vacuo-corrida"></ul>
+            <h4>Descarte</h4>
+            <ul id="report-descarte-corrida"></ul>
+            <h4>Ajuda Externa</h4>
+            <ul id="report-ajuda-externa-corrida"></ul>
+            <h4>Atitude Antidesportiva</h4>
+            <ul id="report-antidesportiva"></ul>
           </div>
         </div>
       </div>

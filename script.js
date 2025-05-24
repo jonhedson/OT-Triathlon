@@ -193,4 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Exibe a aba inicial ao carregar a página
   showTab(currentTabIndex);
+
+  
 });
