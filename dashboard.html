@@ -120,14 +120,16 @@
       }
 
       html.dashboard-page body {
-        /* Usaremos uma classe no <html> para isso */
-        display: block; /* Anula o flexbox para a página de relatório */
-        min-height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
         height: auto;
-        overflow-y: scroll; /* Permite rolagem vertical na página de relatório */
+        overflow-y: scroll;
         overflow-x: hidden;
-        padding: 0; /* O padding virá do app-container */
+        padding: 0;
       }
+
       /* Estilo para o conteúdo da "aba" única do dashboard */
       .single-tab-content {
         /* Herda a maioria dos estilos de .tab */
@@ -245,29 +247,82 @@
           <div class="report-section" id="relatorio-transicao-i">
             <h2>Transição I</h2>
             <p>Dados da Transição I aparecerão aqui.</p>
-        </div>
+          </div>
 
-        <div class="report-section" id="relatorio-ciclismo">
+          <div class="report-section" id="relatorio-ciclismo">
             <h2>Ciclismo</h2>
             <h3>Verificação da Prova</h3>
-            <p><strong>Percurso:</strong> <span id="report-ciclismo-percurso"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-percurso-obs" readonly></textarea></p>
-            <p><strong>Segurança no Percurso:</strong> <span id="report-ciclismo-seguranca"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-seguranca-obs" readonly></textarea></p>
-            <p><strong>Controle de Trânsito:</strong> <span id="report-ciclismo-controle-transito"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-controle-transito-obs" readonly></textarea></p>
-            <p><strong>Trânsito:</strong> <span id="report-ciclismo-transito"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-transito-obs" readonly></textarea></p>
-            <p><strong>Retornos:</strong> <span id="report-ciclismo-retornos"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-retornos-obs" readonly></textarea></p>
-            <p><strong>Ambulâncias:</strong> <span id="report-ciclismo-ambulancias"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-ambulancias-obs" readonly></textarea></p>
-            <p><strong>Motos:</strong> <span id="report-ciclismo-motos"></span></p>
-            <p><strong>Observações:</strong> <textarea id="report-ciclismo-motos-obs" readonly></textarea></p>
+            <p>
+              <strong>Percurso:</strong>
+              <span id="report-ciclismo-percurso"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-ciclismo-percurso-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Segurança no Percurso:</strong>
+              <span id="report-ciclismo-seguranca"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-ciclismo-seguranca-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Controle de Trânsito:</strong>
+              <span id="report-ciclismo-controle-transito"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea
+                id="report-ciclismo-controle-transito-obs"
+                readonly
+              ></textarea>
+            </p>
+            <p>
+              <strong>Trânsito:</strong>
+              <span id="report-ciclismo-transito"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-ciclismo-transito-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Retornos:</strong>
+              <span id="report-ciclismo-retornos"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-ciclismo-retornos-obs" readonly></textarea>
+            </p>
+            <p>
+              <strong>Ambulâncias:</strong>
+              <span id="report-ciclismo-ambulancias"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea
+                id="report-ciclismo-ambulancias-obs"
+                readonly
+              ></textarea>
+            </p>
+            <p>
+              <strong>Motos:</strong> <span id="report-ciclismo-motos"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-ciclismo-motos-obs" readonly></textarea>
+            </p>
 
             <h3>Controle de Prova</h3>
-            <p><strong>Primeiro Atleta a Iniciar:</strong> <span id="report-primeiro-atleta-ciclismo"></span></p>
-            <p><strong>Último Atleta a Finalizar:</strong> <span id="report-ultimo-atleta-ciclismo"></span></p>
+            <p>
+              <strong>Primeiro Atleta a Iniciar:</strong>
+              <span id="report-primeiro-atleta-ciclismo"></span>
+            </p>
+            <p>
+              <strong>Último Atleta a Finalizar:</strong>
+              <span id="report-ultimo-atleta-ciclismo"></span>
+            </p>
             <h4>Atletas que Desistiram</h4>
             <ul id="report-desistentes-ciclismo"></ul>
             <h4>Punições Gerais</h4>
@@ -282,7 +337,7 @@
             <ul id="report-descarte-ciclismo"></ul>
             <h4>Ajuda Externa</h4>
             <ul id="report-ajuda-externa-ciclismo"></ul>
-        </div>
+          </div>
 
           <div class="report-section" id="relatorio-transicao-ii">
             <h3>Transição II</h3>

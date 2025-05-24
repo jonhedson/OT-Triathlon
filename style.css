@@ -35,6 +35,7 @@ body {
 }
 
 .app-header h1 {
+    color: white;
     margin: 0;
     font-size: 1.5em;
     font-weight: 700; /* Mais bold para o título principal do app */
