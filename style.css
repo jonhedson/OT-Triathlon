@@ -1,6 +1,6 @@
 /* Estilos Gerais e Mobile-First */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif; /* Inter como principal, Arial como fallback */
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
@@ -29,11 +29,35 @@ body {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 10; /* Garante que o cabeçalho fique acima das abas */
+    display: flex; /* Transforma o header em um flex container */
+    justify-content: space-between; /* Alinha o h1 e o link nas extremidades */
+    align-items: center; /* Centraliza verticalmente */
 }
 
 .app-header h1 {
     margin: 0;
     font-size: 1.5em;
+    font-weight: 700; /* Mais bold para o título principal do app */
+}
+
+h1, h2, h3, h4, h5, h6, .app-header {
+    font-family: 'Poppins', sans-serif; /* Poppins como principal */
+    font-weight: 600; /* Um peso mais encorpado para títulos */
+    color: #333; /* Cor padrão para títulos, ajuste se necessário */
+}
+
+.dashboard-link {
+    background-color: #00bcd4; /* Cor para o botão de relatório */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.dashboard-link:hover {
+    background-color: #00acc1;
 }
 
 /* Estilos para as Abas */
@@ -79,10 +103,10 @@ body {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 0.65em;
     transition: background-color 0.2s ease;
 }
 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="dashboard-page" lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard de Relatórios - Triathlon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Estilos específicos do Dashboard */
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex; /* Mantém flex para o app-container centralizar */
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        overflow: hidden; /* Mantém hidden para o fluxo normal do app */
+      }
+
+      .dashboard-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        /* Remover qualquer altura fixa ou min-height que possa estar causando o problema */
+        min-height: 0; /* Garante que o min-height não force uma altura mínima se não houver conteúdo */
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        /* Remova overflow: hidden se estiver presente aqui */
+      }
+
+      .dashboard-container h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .report-section {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+
+      .report-section h2 {
+        color: #007bff;
+        font-size: 1.6em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+
+      .report-section h3 {
+        color: #555;
+        font-size: 1.2em;
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+
+      .report-section ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 10px;
+      }
+
+      .report-section ul li {
+        background-color: #e9ecef;
+        padding: 8px 12px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        font-size: 0.95em;
+      }
+
+      .report-section p {
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .report-section textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        min-height: 80px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9em;
+        background-color: #fff;
+        resize: vertical;
+      }
+
+      .back-to-app {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 1.1em;
+      }
+
+      .back-to-app a {
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+      }
+
+      .back-to-app a:hover {
+        background-color: #5a6268;
+      }
+
+      html.dashboard-page body {
+        /* Usaremos uma classe no <html> para isso */
+        display: block; /* Anula o flexbox para a página de relatório */
+        min-height: auto;
+        height: auto;
+        overflow-y: scroll; /* Permite rolagem vertical na página de relatório */
+        overflow-x: hidden;
+        padding: 0; /* O padding virá do app-container */
+      }
+      /* Estilo para o conteúdo da "aba" única do dashboard */
+      .single-tab-content {
+        /* Herda a maioria dos estilos de .tab */
+        position: relative; /* Ou remova se não for necessário para rolagem */
+        display: block !important; /* Força a exibição para a página de dashboard */
+        overflow-y: auto; /* Permite rolagem vertical dentro desta "aba" */
+        padding-bottom: 20px; /* Adiciona um padding no final para não "cortar" o último conteúdo */
+      }
+
+      @media (min-width: 768px) {
+        .app-container {
+          border-radius: 8px;
+          /* Remover a altura fixa ou ajustar para que permita o conteúdo definir a altura */
+          /* height: 90vh; REMOVER ESTA LINHA */
+          height: auto; /* Permite que a altura seja definida pelo conteúdo */
+          max-height: 90vh; /* Limita a altura máxima para desktops, adicionando rolagem no container se necessário */
+          overflow-y: auto; /* Permite rolagem no app-container para desktop */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <h1>Relatório da Prova</h1>
+        <a href="index.html" class="dashboard-link">Voltar ao App</a>
+      </header>
+
+      <div class="tabs-container">
+        <div class="tab active single-tab-content" id="dashboard-content">
+          <h2>Relatório Detalhado</h2>
+
+          <div class="report-section" id="relatorio-pre-prova">
+            <h3>Pré-Prova / Registro</h3>
+            <h4>Checagem de Atletas</h4>
+            <ul id="report-atletas-checados"></ul>
+            <h4>Verificações de Normas</h4>
+            <p>
+              <strong>Transição Justa:</strong>
+              <span id="report-transicao-justa"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-transicao-justa-obs" readonly></textarea>
+            </p>
+
+            <p>
+              <strong>Número de Bike Racks e Caixas:</strong>
+              <span id="report-racks-caixas"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-bike-racks-obs" readonly></textarea>
+            </p>
+
+            <p>
+              <strong>Bike Rack para Triatletas:</strong>
+              <span id="report-bike-rack-triatletas"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea
+                id="report-bike-rack-triatletas-obs"
+                readonly
+              ></textarea>
+            </p>
+
+            <p>
+              <strong>Área de Monte e Desmonte:</strong>
+              <span id="report-area-monte-desmonte"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-area-monte-desmonte-obs" readonly></textarea>
+            </p>
+
+            <p>
+              <strong>Horário de Bike Check-in Compatível com Atletas:</strong>
+              <span id="report-checkin-horario"></span>
+            </p>
+            <p>
+              <strong>Observações:</strong>
+              <textarea id="report-checkin-horario-obs" readonly></textarea>
+            </p>
+
+            <h3>Informações Adicionais</h3>
+            <textarea id="report-info-adicional-pre-prova" readonly></textarea>
+          </div>
+
+          <div class="report-section" id="relatorio-natacao">
+            <h3>Natação</h3>
+            <p>
+              <strong>Primeiro Atleta a Sair da Água:</strong>
+              <span id="report-primeiro-atleta-natacao"></span>
+            </p>
+            <p>
+              <strong>Último Atleta a Sair da Água:</strong>
+              <span id="report-ultimo-atleta-natacao"></span>
+            </p>
+            <h4>Atletas que Desistiram</h4>
+            <ul id="report-desistentes-natacao"></ul>
+            <h4>Punições</h4>
+            <p>Corte de Boia</p>
+            <ul id="report-corte-boia"></ul>
+            <p>Largada Falsa</p>
+            <ul id="report-largada-falsa"></ul>
+            <p>Contato</p>
+            <ul id="report-contato"></ul>
+            <p>Ajuda Externa</p>
+            <ul id="report-ajuda-externa"></ul>
+            <p>Descarte</p>
+            <ul id="report-descarte"></ul>
+          </div>
+
+          <div class="report-section" id="relatorio-transicao-i">
+            <h3>Transição I</h3>
+            <p>Dados da Transição I aparecerão aqui.</p>
+          </div>
+
+          <div class="report-section" id="relatorio-ciclismo">
+            <h3>Ciclismo</h3>
+            <p>Dados do Ciclismo aparecerão aqui.</p>
+          </div>
+
+          <div class="report-section" id="relatorio-transicao-ii">
+            <h3>Transição II</h3>
+            <p>Dados da Transição II aparecerão aqui.</p>
+          </div>
+
+          <div class="report-section" id="relatorio-corrida">
+            <h3>Corrida</h3>
+            <p>Dados da Corrida aparecerão aqui.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
