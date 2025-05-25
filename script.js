@@ -6,6 +6,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentTabIndex = 0; // Começa na primeira aba (Home)
 
+  // #region Armazenamento Local
+  // Objeto para armazenar todos os dados do aplicativo
+    let appData = JSON.parse(localStorage.getItem('triathlonAppData')) || {
+        preProva: {
+            atletasChecados: [],
+            transicao: { checked: false, obs: '' },
+            numRacks: '',
+            numCaixas: '',
+            bikeRacksObs: '',
+            bikeRackTriatletas: { checked: false, obs: '' },
+            areaMonteDesmonte: { checked: false, obs: '' },
+            checkinHorario: '',
+            totalAtletasCheckin: '',
+            checkinHorarioObs: '',
+            infoAdicional: ''
+        },
+        natacao: {
+            primeiroAtleta: '',
+            ultimoAtleta: '',
+            desistentes: [],
+            punicoes: {
+                corteBoia: [],
+                largadaFalsa: [],
+                contato: [],
+                ajudaExterna: [],
+                descarte: []
+            }
+        },
+        transicaoI: {},
+        ciclismo: {},
+        transicaoII: {},
+        corrida: {}
+    };
+
+    // Função para salvar os dados no localStorage
+    const saveAppData = () => {
+        localStorage.setItem('triathlonAppData', JSON.stringify(appData));
+    };
+    // #endregion Armazenamento Local
+
+
   // Função para mostrar a aba correta
   const showTab = (index) => {
     // Primeiro, ocultamos todas as abas e removemos a classe 'active'
@@ -77,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //#region Pre-Prova
   // Funções para a aba de Pré-Prova
-
   const adicionarAtletaChecado = () => {
     const input = document.getElementById("atletaChecagemInput");
     const lista = document.getElementById("listaAtletasChecados");
@@ -86,37 +126,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (atleta) {
       adicionarAtletaALista(lista, atleta);
       input.value = ""; // Limpa o campo
-
-      // Salva no localStorage
-      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
-      data.atletasChecados = data.atletasChecados || [];
-      data.atletasChecados.push(atleta);
-      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, digite o número do atleta.");
     }
   };
 
-  // Função para registrar número de racks e caixas
+  // Função para registrar número de racks
   const registrarRacks = () => {
     const numRacksInput = document.getElementById("numBikeRacksInput");
+
     const info = document.getElementById("racksInfo");
+
     const numRacks = numRacksInput.value.trim();
 
     if (numRacks) {
       info.textContent = `Racks: ${numRacks}`;
       numRacksInput.value = "";
-
-      // Salva no localStorage para ser lido no dashboard.html
-      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
-      data.racks = numRacks;
-      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o número de racks e caixas.");
     }
   };
 
-  // Função para registrar número de caixas e salvar no localStorage
+  // Função para registrar número de caixas
   const registrarCaixas = () => {
     const numCaixasInput = document.getElementById("numCaixasInput");
     const info = document.getElementById("caixasInfo");
@@ -126,17 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (numCaixas) {
       info.textContent = `Caixas: ${numCaixas}`;
       numCaixasInput.value = "";
-
-      // Salva no localStorage para ser lido no dashboard.html
-      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
-      data.caixas = numCaixas;
-      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o número de racks e caixas.");
     }
   };
 
   // Função para registrar horário de check-in e total de atletas
+
   const registrarCheckinHorario = () => {
     const horarioInput = document.getElementById("checkinHorarioInput");
     const totalAtletasInput = document.getElementById(
@@ -151,14 +178,6 @@ document.addEventListener("DOMContentLoaded", () => {
       info.textContent = `Horário: ${horario}, Atletas: ${totalAtletas}`;
       horarioInput.value = "";
       totalAtletasInput.value = "";
-
-      // Salva no localStorage para ser lido no dashboard.html
-      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
-      data.checkin = {
-        horario: horario,
-        totalAtletas: totalAtletas
-      };
-      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o horário e o total de atletas.");
     }
