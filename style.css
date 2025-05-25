@@ -168,8 +168,7 @@ h6,
 
 .section button {
   padding: 8px 12px;
-
-  background-color: #28a745; /* Cor verde para adicionar */
+  background-color: #00bcd4; /* Cor para o botão de relatório */
   color: white;
   border: none;
   border-radius: 4px;
@@ -178,11 +177,11 @@ h6,
 }
 
 .section button:hover {
-  background-color: #218838;
+  background-color: #02a8be;
 }
 
 .section button:active {
-  background-color: #1e7e34;
+  background-color: #02a8bea5;
 }
 
 .athlete-list {
@@ -305,6 +304,7 @@ h6,
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  
 }
 
 .norm-checker textarea {
@@ -323,7 +323,7 @@ h6,
 .norm-checker button {
   margin-top: 5px;
   padding: 8px 12px;
-  background-color: #007bff; /* Azul para ações gerais */
+  background-color: #02a8be; /* Azul para ações gerais */
   color: white;
   border: none;
   border-radius: 4px;
