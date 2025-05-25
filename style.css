@@ -340,3 +340,10 @@ h6,
   font-size: 0.95em;
   color: #666;
 }
+/* Esmaecer o texto do placeholder em todos os inputs e textareas */
+input::placeholder,
+textarea::placeholder {
+  color: #b0b0b085;      /* tom cinza claro */
+  opacity: 1;          /* garante que a cor seja aplicada */
+  font-style: italic;  /* opcional: deixa o texto levemente diferente */
+}

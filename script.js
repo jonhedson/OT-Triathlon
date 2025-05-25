@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-  // ...existing code...
+
 
   //#region Pre-Prova
   // Funções para a aba de Pré-Prova
