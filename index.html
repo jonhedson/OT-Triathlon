@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#166384" />
     <title>Oficial Técnico Triathlon</title>
-    <link rel="stylesheet" href="style.css" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Poppins:wght@400;600;700&display=swap"
-       rel="preload" as="style"
-    >
+      rel="preload"
+      as="style"
+    />
   </head>
   <body>
     <div class="app-container">
-
       <!-- Header  -->
       <header class="app-header">
         <a href="index.html">
@@ -24,7 +25,7 @@
             height="50"
             width="70"
             class="app-logo"
-          >
+          />
         </a>
         <h1>Oficial Técnico Triathlon</h1>
         <a href="dashboard.html" class="dashboard-link">Relatório</a>
@@ -42,7 +43,7 @@
               height="400"
               width="560"
               class="app-logo"
-            >
+            />
             <h2>Oficial Técnico Triathlon</h2>
             <p class="introduction-text">
               Este aplicativo foi desenvolvido para auxiliar a equipe de
@@ -61,25 +62,28 @@
 
           <div class="section">
 
-            <h3>Check-in</h3>
-            <label for="atletaChecagemInput">Atleta: </label>
-            <input
-              type="number"
-              id="atletaChecagemInput"
-              placeholder="Número do Atleta"
-            >
-            <button onclick="adicionarAtletaChecado()">
-              Registrar
-            </button>
-            <ul id="listaAtletasChecados" class="athlete-list"></ul>
+            <!-- Check-in -->
+            <div class="norm-checker">
+              <h3>Check-in</h3>
+              <label for="atletaChecagemInput">Atleta: </label>
+              <input
+                type="number"
+                id="atletaChecagemInput"
+                placeholder="Número do Atleta"
+              />
+              <button onclick="adicionarAtletaChecado()">Registrar</button>
+              <ul id="listaAtletasChecados" class="athlete-list"></ul>
+            </div>
           </div>
 
+          <!-- Section  Normas-->
           <div class="section">
             <h3>Normas</h3>
 
+            <!-- Transição -->
             <div class="norm-checker">
               <h4>Transição</h4>
-              <input type="checkbox" id="transicaoCheck" >
+              <input type="checkbox" id="transicaoCheck" />
               <label for="transicaoCheck">Conformidade</label>
               <textarea
                 id="transicaoObs"
@@ -88,24 +92,27 @@
               ></textarea>
             </div>
 
+            <!-- Bike Racks e Caixas -->
             <div class="norm-checker">
-              <h4>Problemas Numeração Racks e Caixas</h4>
-              
+              <h4>Numeração</h4>
+
+              <label for="numBikeRacksInput">Racks: </label>
               <input
                 type="number"
                 id="numBikeRacksInput"
                 placeholder="Nº Racks"
-              >
-              
+              />
+
               <button onclick="registrarRacks()">Registrar</button>
               <p id="racksInfo"></p>
-              
-              <input 
-                type="number" 
-                id="numCaixasInput" 
-                placeholder="Nº Caixas" 
-              >
-              
+
+              <label for="numCaixasInput">Caixas: </label>
+              <input
+                type="number"
+                id="numCaixasInput"
+                placeholder="Nº Caixas"
+              />
+
               <button onclick="registrarCaixas()">Registrar</button>
               <p id="caixasInfo"></p>
 
@@ -115,12 +122,14 @@
                 rows="2"
               ></textarea>
             </div>
-          
 
+            <!-- Racks para ParaTriatletas -->
             <div class="norm-checker">
-              <h4>Problemas nos Bike Racks Para Atletas</h4>
-              <input type="checkbox" id="bikeRackTriatletasCheck" >
+              <h4>Racks ParaAtletas</h4>
+
+              <input type="checkbox" id="bikeRackTriatletasCheck" />
               <label for="bikeRackTriatletasCheck">Conformidade</label>
+
               <textarea
                 id="bikeRackTriatletasObs"
                 placeholder="Observações sobre bike rack para triatletas..."
@@ -129,41 +138,49 @@
             </div>
           </div>
 
-            <div class="norm-checker">
-              <h4>Área de Monte e Desmonte</h4>
-              <input type="checkbox" id="areaMonteDesmonteCheck" >
-              <label for="areaMonteDesmonteCheck">Conformidade</label>
-              <textarea
-                id="areaMonteDesmonteObs"
-                placeholder="Observações sobre área de monte/desmonte..."
-                rows="2"
-              ></textarea>
-            </div>
-          
-            <div class="norm-checker">
-              <h4>Horário de Bike Check-in Compatível com Atletas</h4>
-              <input
-                type="number"
-                id="checkinHorarioInput"
-                placeholder="Horário (ex: 08:00-09:00)"
-              >
-              <input
-                type="number"
-                id="totalAtletasCheckinInput"
-                placeholder="Total de Atletas"
-              >
-              <button onclick="registrarCheckinHorario()">Registrar</button>
-              <p id="checkinHorarioInfo"></p>
-              <textarea
-                id="checkinHorarioObs"
-                placeholder="Observações sobre horário de check-in..."
-                rows="2"
-              ></textarea>
-            </div>
-          
+          <!-- Area de Monte e Desmonte -->
+          <div class="norm-checker">
+            <h4>Área de Monte e Desmonte</h4>
+            <input type="checkbox" id="areaMonteDesmonteCheck" />
+            <label for="areaMonteDesmonteCheck">Conformidade</label>
+            <textarea
+              id="areaMonteDesmonteObs"
+              placeholder="Observações sobre área de monte/desmonte..."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="norm-checker">
+            <h4>Bike check-in compatível com número de atletas</h4>
+            
+            <label for="checkinHorarioInput">Horário:</label>
+            <input
+              type="number"
+              id="checkinHorarioInput"
+              placeholder="Horário (ex: 08:00-09:00)"
+            />
+
+            <label for="totalAtletasCheckinInput">Total de Atletas:</label>
+            <input
+              type="number"
+              id="totalAtletasCheckinInput"
+              placeholder="Total de Atletas"
+            />
+
+            <button onclick="registrarCheckinHorario()">Registrar</button>
+            
+            <p id="checkinHorarioInfo"></p>
+            <textarea
+              id="checkinHorarioObs"
+              placeholder="Observações sobre horário de check-in..."
+              rows="2"
+            ></textarea>
+          </div>
 
           <div class="section">
             <h3>Informações Adicionais</h3>
+            
+            <label for="infoAdicionalPreProva">Observações Gerais:</label>
             <textarea
               placeholder="Observações importantes antes da prova..."
               rows="4"
@@ -182,7 +199,7 @@
               type="number"
               id="primeiroAtletaNatacao"
               placeholder="Número do Atleta"
-            >
+            />
             <button onclick="registrarPrimeiroAtletaNatacao()">
               Registrar
             </button>
@@ -195,7 +212,7 @@
               type="number"
               id="ultimoAtletaNatacao"
               placeholder="Número do Atleta"
-            >
+            />
             <button onclick="registrarUltimoAtletaNatacao()">Registrar</button>
             <p id="ultimoAtletaNatacaoInfo"></p>
           </div>
@@ -206,7 +223,7 @@
               type="number"
               id="desistenteNatacaoInput"
               placeholder="Número do Atleta"
-            >
+            />
             <button onclick="adicionarDesistenteNatacao()">
               Adicionar Desistente
             </button>
@@ -222,7 +239,7 @@
                 class="punishment-input"
                 data-punishment="corteBoia"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicao('corteBoia')">Aplicar</button>
               <ul id="listaCorteBoia" class="athlete-list"></ul>
             </div>
@@ -233,7 +250,7 @@
                 class="punishment-input"
                 data-punishment="largadaFalsa"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicao('largadaFalsa')">
                 Aplicar
               </button>
@@ -246,7 +263,7 @@
                 class="punishment-input"
                 data-punishment="contato"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicao('contato')">Aplicar</button>
               <ul id="listaContato" class="athlete-list"></ul>
             </div>
@@ -257,7 +274,7 @@
                 class="punishment-input"
                 data-punishment="ajudaExterna"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicao('ajudaExterna')">
                 Aplicar
               </button>
@@ -270,7 +287,7 @@
                 class="punishment-input"
                 data-punishment="descarte"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicao('descarte')">Aplicar</button>
               <ul id="listaDescarte" class="athlete-list"></ul>
             </div>
@@ -285,7 +302,7 @@
             <h3>Verificação</h3>
             <div class="norm-checker">
               <h4>Organização das Bikes nos Racks</h4>
-              <input type="checkbox" id="transicaoIOrgBikesCheck" >
+              <input type="checkbox" id="transicaoIOrgBikesCheck" />
               <label for="transicaoIOrgBikesCheck"></label>
               <textarea
                 id="transicaoIOrgBikesObs"
@@ -295,7 +312,7 @@
             </div>
             <div class="norm-checker">
               <h4>Fluxo de Atletas na Transição</h4>
-              <input type="checkbox" id="transicaoIFluxoAtletasCheck" >
+              <input type="checkbox" id="transicaoIFluxoAtletasCheck" />
               <label for="transicaoIFluxoAtletasCheck">Conforme</label>
               <textarea
                 id="transicaoIFluxoAtletasObs"
@@ -305,7 +322,7 @@
             </div>
             <div class="norm-checker">
               <h4>Descarte de Equipamentos (área designada)</h4>
-              <input type="checkbox" id="transicaoIDescarteCheck" >
+              <input type="checkbox" id="transicaoIDescarteCheck" />
               <label for="transicaoIDescarteCheck">Conforme</label>
               <textarea
                 id="transicaoIDescarteObs"
@@ -315,7 +332,7 @@
             </div>
             <div class="norm-checker">
               <h4>Kit de Primeiros Socorros / Ambulância próxima</h4>
-              <input type="checkbox" id="transicaoIAmbulanciaCheck" >
+              <input type="checkbox" id="transicaoIAmbulanciaCheck" />
               <label for="transicaoIAmbulanciaCheck">Conforme</label>
               <textarea
                 id="transicaoIAmbulanciaObs"
@@ -333,7 +350,7 @@
                 type="number"
                 id="primeiroAtletaEntradaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaEntradaTI()">
                 Registrar
               </button>
@@ -345,7 +362,7 @@
                 type="number"
                 id="primeiroAtletaSaidaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaSaidaTI()">
                 Registrar
               </button>
@@ -357,7 +374,7 @@
                 type="number"
                 id="ultimoAtletaEntradaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaEntradaTI()">
                 Registrar
               </button>
@@ -369,7 +386,7 @@
                 type="number"
                 id="ultimoAtletaSaidaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaSaidaTI()">
                 Registrar
               </button>
@@ -381,7 +398,7 @@
                 type="number"
                 id="desistenteTransicaoIInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarDesistenteTransicaoI()">
                 Adicionar Desistente
               </button>
@@ -398,7 +415,7 @@
                 class="punishment-input"
                 data-punishment="bloquearObstruirTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoI('bloquearObstruirTI')"
               >
@@ -413,7 +430,7 @@
                 class="punishment-input"
                 data-punishment="assistenciaExternaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoI('assistenciaExternaTI')"
               >
@@ -428,7 +445,7 @@
                 class="punishment-input"
                 data-punishment="nudismoTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoTransicaoI('nudismoTI')">
                 Aplicar
               </button>
@@ -441,7 +458,7 @@
                 class="punishment-input"
                 data-punishment="descarteLixoTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoTransicaoI('descarteLixoTI')">
                 Aplicar
               </button>
@@ -454,7 +471,7 @@
                 class="punishment-input"
                 data-punishment="equipamentoForaAreaTI"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoI('equipamentoForaAreaTI')"
               >
@@ -473,7 +490,7 @@
             <h3>Verificação da Prova</h3>
             <div class="norm-checker">
               <h4>Percurso</h4>
-              <input type="checkbox" id="ciclismoPercursoCheck" >
+              <input type="checkbox" id="ciclismoPercursoCheck" />
               <label for="ciclismoPercursoCheck">Conforme</label>
               <textarea
                 id="ciclismoPercursoObs"
@@ -483,7 +500,7 @@
             </div>
             <div class="norm-checker">
               <h4>Segurança no Percurso</h4>
-              <input type="checkbox" id="ciclismoSegurancaCheck" >
+              <input type="checkbox" id="ciclismoSegurancaCheck" />
               <label for="ciclismoSegurancaCheck">Conforme</label>
               <textarea
                 id="ciclismoSegurancaObs"
@@ -493,7 +510,7 @@
             </div>
             <div class="norm-checker">
               <h4>Controle de Trânsito</h4>
-              <input type="checkbox" id="ciclismoControleTransitoCheck" >
+              <input type="checkbox" id="ciclismoControleTransitoCheck" />
               <label for="ciclismoControleTransitoCheck">Conforme</label>
               <textarea
                 id="ciclismoControleTransitoObs"
@@ -503,7 +520,7 @@
             </div>
             <div class="norm-checker">
               <h4>Trânsito</h4>
-              <input type="checkbox" id="ciclismoTransitoCheck" >
+              <input type="checkbox" id="ciclismoTransitoCheck" />
               <label for="ciclismoTransitoCheck">Conforme</label>
               <textarea
                 id="ciclismoTransitoObs"
@@ -513,7 +530,7 @@
             </div>
             <div class="norm-checker">
               <h4>Retornos</h4>
-              <input type="checkbox" id="ciclismoRetornosCheck" >
+              <input type="checkbox" id="ciclismoRetornosCheck" />
               <label for="ciclismoRetornosCheck">Conforme</label>
               <textarea
                 id="ciclismoRetornosObs"
@@ -523,7 +540,7 @@
             </div>
             <div class="norm-checker">
               <h4>Ambulâncias</h4>
-              <input type="checkbox" id="ciclismoAmbulanciasCheck" >
+              <input type="checkbox" id="ciclismoAmbulanciasCheck" />
               <label for="ciclismoAmbulanciasCheck">Conforme</label>
               <textarea
                 id="ciclismoAmbulanciasObs"
@@ -533,7 +550,7 @@
             </div>
             <div class="norm-checker">
               <h4>Motos</h4>
-              <input type="checkbox" id="ciclismoMotosCheck" >
+              <input type="checkbox" id="ciclismoMotosCheck" />
               <label for="ciclismoMotosCheck">Conforme</label>
               <textarea
                 id="ciclismoMotosObs"
@@ -545,14 +562,14 @@
 
           <div class="section">
             <h3>Controle de Prova</h3>
-            
+
             <div class="norm-checker">
               <h4>Primeiro Atleta a Iniciar o Ciclismo</h4>
               <input
                 type="number"
                 id="primeiroAtletaCiclismo"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaCiclismo()">
                 Registrar
               </button>
@@ -565,20 +582,20 @@
                 type="number"
                 id="ultimoAtletaCiclismo"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaCiclismo()">
                 Registrar
               </button>
               <p id="ultimoAtletaCiclismoInfo"></p>
             </div>
-            
+
             <div class="norm-checker">
               <h4>Atletas que Desistiram</h4>
               <input
                 type="number"
                 id="desistenteCiclismoInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarDesistenteCiclismo()">
                 Adicionar Desistente
               </button>
@@ -591,7 +608,7 @@
                 type="number"
                 id="punicaoCiclismoAtletaInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <textarea
                 id="punicaoCiclismoObsInput"
                 placeholder="Observação da punição..."
@@ -602,7 +619,6 @@
               </button>
               <ul id="listaPunicoesCiclismo" class="athlete-list"></ul>
             </div>
-
           </div>
 
           <div class="section">
@@ -614,7 +630,7 @@
                 class="punishment-input"
                 data-punishment="vacuo"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCiclismo('vacuo')">
                 Aplicar
               </button>
@@ -627,7 +643,7 @@
                 class="punishment-input"
                 data-punishment="andarClipado"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCiclismo('andarClipado')">
                 Aplicar
               </button>
@@ -640,7 +656,7 @@
                 class="punishment-input"
                 data-punishment="descarteCiclismo"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCiclismo('descarteCiclismo')">
                 Aplicar
               </button>
@@ -653,7 +669,7 @@
                 class="punishment-input"
                 data-punishment="ajudaExternaCiclismo"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoCiclismo('ajudaExternaCiclismo')"
               >
@@ -672,7 +688,7 @@
             <h3>Verificação da Área de Transição</h3>
             <div class="norm-checker">
               <h4>Devolução das Bikes nos Racks</h4>
-              <input type="checkbox" id="transicaoIIDevolucaoBikesCheck" >
+              <input type="checkbox" id="transicaoIIDevolucaoBikesCheck" />
               <label for="transicaoIIDevolucaoBikesCheck">Conforme</label>
               <textarea
                 id="transicaoIIDevolucaoBikesObs"
@@ -682,7 +698,7 @@
             </div>
             <div class="norm-checker">
               <h4>Fluxo de Atletas na Transição</h4>
-              <input type="checkbox" id="transicaoIIFluxoAtletasCheck" >
+              <input type="checkbox" id="transicaoIIFluxoAtletasCheck" />
               <label for="transicaoIIFluxoAtletasCheck">Conforme</label>
               <textarea
                 id="transicaoIIFluxoAtletasObs"
@@ -692,7 +708,7 @@
             </div>
             <div class="norm-checker">
               <h4>Organização da Área de Troca de Equipamentos</h4>
-              <input type="checkbox" id="transicaoIIOrgEquipamentosCheck" >
+              <input type="checkbox" id="transicaoIIOrgEquipamentosCheck" />
               <label for="transicaoIIOrgEquipamentosCheck">Conforme</label>
               <textarea
                 id="transicaoIIOrgEquipamentosObs"
@@ -702,7 +718,7 @@
             </div>
             <div class="norm-checker">
               <h4>Kit de Primeiros Socorros / Ambulância próxima</h4>
-              <input type="checkbox" id="transicaoIIAmbulanciaCheck" >
+              <input type="checkbox" id="transicaoIIAmbulanciaCheck" />
               <label for="transicaoIIAmbulanciaCheck">Conforme</label>
               <textarea
                 id="transicaoIIAmbulanciaObs"
@@ -720,7 +736,7 @@
                 type="number"
                 id="primeiroAtletaEntradaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaEntradaTII()">
                 Registrar
               </button>
@@ -732,7 +748,7 @@
                 type="number"
                 id="primeiroAtletaSaidaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaSaidaTII()">
                 Registrar
               </button>
@@ -744,7 +760,7 @@
                 type="number"
                 id="ultimoAtletaEntradaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaEntradaTII()">
                 Registrar
               </button>
@@ -756,7 +772,7 @@
                 type="number"
                 id="ultimoAtletaSaidaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaSaidaTII()">
                 Registrar
               </button>
@@ -768,7 +784,7 @@
                 type="number"
                 id="desistenteTransicaoIIInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarDesistenteTransicaoII()">
                 Adicionar Desistente
               </button>
@@ -785,7 +801,7 @@
                 class="punishment-input"
                 data-punishment="bloquearObstruirTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoII('bloquearObstruirTII')"
               >
@@ -800,7 +816,7 @@
                 class="punishment-input"
                 data-punishment="assistenciaExternaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoII('assistenciaExternaTII')"
               >
@@ -815,7 +831,7 @@
                 class="punishment-input"
                 data-punishment="nudismoTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoTransicaoII('nudismoTII')">
                 Aplicar
               </button>
@@ -828,7 +844,7 @@
                 class="punishment-input"
                 data-punishment="descarteLixoTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoTransicaoII('descarteLixoTII')">
                 Aplicar
               </button>
@@ -841,7 +857,7 @@
                 class="punishment-input"
                 data-punishment="equipamentoForaAreaTII"
                 placeholder="Número do Atleta"
-              >
+              />
               <button
                 onclick="adicionarPunicaoTransicaoII('equipamentoForaAreaTII')"
               >
@@ -861,7 +877,7 @@
             <h3>Verificação da Prova</h3>
             <div class="norm-checker">
               <h4>Percurso</h4>
-              <input type="checkbox" id="corridaPercursoCheck" >
+              <input type="checkbox" id="corridaPercursoCheck" />
               <label for="corridaPercursoCheck">Conforme</label>
               <textarea
                 id="corridaPercursoObs"
@@ -871,7 +887,7 @@
             </div>
             <div class="norm-checker">
               <h4>Segurança no Percurso</h4>
-              <input type="checkbox" id="corridaSegurancaCheck" >
+              <input type="checkbox" id="corridaSegurancaCheck" />
               <label for="corridaSegurancaCheck">Conforme</label>
               <textarea
                 id="corridaSegurancaObs"
@@ -881,7 +897,7 @@
             </div>
             <div class="norm-checker">
               <h4>Postos de Hidratação</h4>
-              <input type="checkbox" id="corridaHidratacaoCheck" >
+              <input type="checkbox" id="corridaHidratacaoCheck" />
               <label for="corridaHidratacaoCheck">Conforme</label>
               <textarea
                 id="corridaHidratacaoObs"
@@ -891,7 +907,7 @@
             </div>
             <div class="norm-checker">
               <h4>Postos de Alimentação</h4>
-              <input type="checkbox" id="corridaAlimentacaoCheck" >
+              <input type="checkbox" id="corridaAlimentacaoCheck" />
               <label for="corridaAlimentacaoCheck">Conforme</label>
               <textarea
                 id="corridaAlimentacaoObs"
@@ -901,7 +917,7 @@
             </div>
             <div class="norm-checker">
               <h4>Retornos</h4>
-              <input type="checkbox" id="corridaRetornosCheck" >
+              <input type="checkbox" id="corridaRetornosCheck" />
               <label for="corridaRetornosCheck">Conforme</label>
               <textarea
                 id="corridaRetornosObs"
@@ -911,7 +927,7 @@
             </div>
             <div class="norm-checker">
               <h4>Ambulâncias</h4>
-              <input type="checkbox" id="corridaAmbulanciasCheck" >
+              <input type="checkbox" id="corridaAmbulanciasCheck" />
               <label for="corridaAmbulanciasCheck">Conforme</label>
               <textarea
                 id="corridaAmbulanciasObs"
@@ -929,7 +945,7 @@
                 type="number"
                 id="primeiroAtletaCorrida"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarPrimeiroAtletaCorrida()">
                 Registrar
               </button>
@@ -941,7 +957,7 @@
                 type="number"
                 id="ultimoAtletaCorrida"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="registrarUltimoAtletaCorrida()">
                 Registrar
               </button>
@@ -953,7 +969,7 @@
                 type="number"
                 id="desistenteCorridaInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarDesistenteCorrida()">
                 Adicionar Desistente
               </button>
@@ -965,7 +981,7 @@
                 type="number"
                 id="punicaoCorridaAtletaInput"
                 placeholder="Número do Atleta"
-              >
+              />
               <textarea
                 id="punicaoCorridaObsInput"
                 placeholder="Observação da punição..."
@@ -987,7 +1003,7 @@
                 class="punishment-input"
                 data-punishment="vacuoCorrida"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCorrida('vacuoCorrida')">
                 Aplicar
               </button>
@@ -1000,7 +1016,7 @@
                 class="punishment-input"
                 data-punishment="descarteCorrida"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCorrida('descarteCorrida')">
                 Aplicar
               </button>
@@ -1013,7 +1029,7 @@
                 class="punishment-input"
                 data-punishment="ajudaExternaCorrida"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCorrida('ajudaExternaCorrida')">
                 Aplicar
               </button>
@@ -1026,7 +1042,7 @@
                 class="punishment-input"
                 data-punishment="antidesportiva"
                 placeholder="Número do Atleta"
-              >
+              />
               <button onclick="adicionarPunicaoCorrida('antidesportiva')">
                 Aplicar
               </button>
@@ -1043,7 +1059,7 @@
             <h3>Área de Chegada</h3>
             <div class="norm-checker">
               <h4>Pontos de Controle</h4>
-              <input type="checkbox" id="chegadaPontosControleCheck" >
+              <input type="checkbox" id="chegadaPontosControleCheck" />
               <label for="chegadaPontosControleCheck">Conforme</label>
               <textarea
                 id="chegadaPontosControleObs"
@@ -1053,7 +1069,7 @@
             </div>
             <div class="norm-checker">
               <h4>Backup (Cronometragem, Dados)</h4>
-              <input type="checkbox" id="chegadaBackupCheck" >
+              <input type="checkbox" id="chegadaBackupCheck" />
               <label for="chegadaBackupCheck">Conforme</label>
               <textarea
                 id="chegadaBackupObs"
@@ -1063,7 +1079,7 @@
             </div>
             <div class="norm-checker">
               <h4>Faixa de Chegada</h4>
-              <input type="checkbox" id="chegadaFaixaChegadaCheck" >
+              <input type="checkbox" id="chegadaFaixaChegadaCheck" />
               <label for="chegadaFaixaChegadaCheck">Conforme</label>
               <textarea
                 id="chegadaFaixaChegadaObs"
@@ -1073,7 +1089,7 @@
             </div>
             <div class="norm-checker">
               <h4>Área de Dispersão</h4>
-              <input type="checkbox" id="chegadaAreaDispersaoCheck" >
+              <input type="checkbox" id="chegadaAreaDispersaoCheck" />
               <label for="chegadaAreaDispersaoCheck">Conforme</label>
               <textarea
                 id="chegadaAreaDispersaoObs"
@@ -1083,7 +1099,7 @@
             </div>
             <div class="norm-checker">
               <h4>Área Médica</h4>
-              <input type="checkbox" id="chegadaAreaMedicaCheck" >
+              <input type="checkbox" id="chegadaAreaMedicaCheck" />
               <label for="chegadaAreaMedicaCheck">Conforme</label>
               <textarea
                 id="chegadaAreaMedicaObs"
@@ -1093,7 +1109,7 @@
             </div>
             <div class="norm-checker">
               <h4>Verificação de Resultados</h4>
-              <input type="checkbox" id="chegadaVerificacaoResultadosCheck" >
+              <input type="checkbox" id="chegadaVerificacaoResultadosCheck" />
               <label for="chegadaVerificacaoResultadosCheck">Conforme</label>
               <textarea
                 id="chegadaVerificacaoResultadosObs"
@@ -1103,7 +1119,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <nav class="tab-navigation">
