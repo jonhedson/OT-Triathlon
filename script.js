@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ...existing code...
 
   //#region Pre-Prova
-
   // Funções para a aba de Pré-Prova
 
   const adicionarAtletaChecado = () => {
@@ -87,6 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (atleta) {
       adicionarAtletaALista(lista, atleta);
       input.value = ""; // Limpa o campo
+
+      // Salva no localStorage
+      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
+      data.atletasChecados = data.atletasChecados || [];
+      data.atletasChecados.push(atleta);
+      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, digite o número do atleta.");
     }
@@ -95,20 +100,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para registrar número de racks e caixas
   const registrarRacks = () => {
     const numRacksInput = document.getElementById("numBikeRacksInput");
-
     const info = document.getElementById("racksInfo");
-
     const numRacks = numRacksInput.value.trim();
 
     if (numRacks) {
       info.textContent = `Racks: ${numRacks}`;
       numRacksInput.value = "";
+
+      // Salva no localStorage para ser lido no dashboard.html
+      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
+      data.racks = numRacks;
+      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o número de racks e caixas.");
     }
   };
 
-  // Função para registrar número de racks e caixas
+  // Função para registrar número de caixas e salvar no localStorage
   const registrarCaixas = () => {
     const numCaixasInput = document.getElementById("numCaixasInput");
     const info = document.getElementById("caixasInfo");
@@ -118,28 +126,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (numCaixas) {
       info.textContent = `Caixas: ${numCaixas}`;
       numCaixasInput.value = "";
+
+      // Salva no localStorage para ser lido no dashboard.html
+      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
+      data.caixas = numCaixas;
+      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o número de racks e caixas.");
     }
   };
 
-  const registrarRacksCaixas = () => {
-    const numRacksInput = document.getElementById("numBikeRacksInput");
-    const numCaixasInput = document.getElementById("numCaixasInput");
-    const info = document.getElementById("racksCaixasInfo");
-
-    const numRacks = numRacksInput.value.trim();
-    const numCaixas = numCaixasInput.value.trim();
-
-    if (numRacks && numCaixas) {
-      info.textContent = `Racks: ${numRacks}, Caixas: ${numCaixas}`;
-      numRacksInput.value = "";
-      numCaixasInput.value = "";
-    } else {
-      alert("Por favor, preencha o número de racks e caixas.");
-    }
-  };
-
+  // Função para registrar horário de check-in e total de atletas
   const registrarCheckinHorario = () => {
     const horarioInput = document.getElementById("checkinHorarioInput");
     const totalAtletasInput = document.getElementById(
@@ -154,6 +151,14 @@ document.addEventListener("DOMContentLoaded", () => {
       info.textContent = `Horário: ${horario}, Atletas: ${totalAtletas}`;
       horarioInput.value = "";
       totalAtletasInput.value = "";
+
+      // Salva no localStorage para ser lido no dashboard.html
+      let data = JSON.parse(localStorage.getItem("triathlonAppData")) || {};
+      data.checkin = {
+        horario: horario,
+        totalAtletas: totalAtletas
+      };
+      localStorage.setItem("triathlonAppData", JSON.stringify(data));
     } else {
       alert("Por favor, preencha o horário e o total de atletas.");
     }
@@ -625,6 +630,61 @@ document.addEventListener("DOMContentLoaded", () => {
   window.adicionarPunicaoCorrida = adicionarPunicaoCorrida;
 
   // #endregion Corrida
+
+  // #region Chegada
+  // Funções para a aba Chegada
+
+  // Exemplo: registrar observação dos pontos de controle
+  const registrarChegadaPontosControle = () => {
+    const check = document.getElementById("chegadaPontosControleCheck");
+    const obs = document.getElementById("chegadaPontosControleObs");
+    let msg = check.checked ? "Conforme" : "Não conforme";
+    if (obs.value.trim()) {
+      msg += " - " + obs.value.trim();
+    }
+    obs.value = msg;
+  };
+
+  // Repita para cada item de verificação se quiser feedback automático
+  // Ou apenas use os campos normalmente, pois o HTML já permite digitação e marcação
+
+  // Se quiser salvar todas as observações de chegada em um objeto:
+  const coletarDadosChegada = () => {
+    return {
+      pontosControle: {
+        conforme: document.getElementById("chegadaPontosControleCheck").checked,
+        obs: document.getElementById("chegadaPontosControleObs").value.trim(),
+      },
+      backup: {
+        conforme: document.getElementById("chegadaBackupCheck").checked,
+        obs: document.getElementById("chegadaBackupObs").value.trim(),
+      },
+      faixaChegada: {
+        conforme: document.getElementById("chegadaFaixaChegadaCheck").checked,
+        obs: document.getElementById("chegadaFaixaChegadaObs").value.trim(),
+      },
+      areaDispersao: {
+        conforme: document.getElementById("chegadaAreaDispersaoCheck").checked,
+        obs: document.getElementById("chegadaAreaDispersaoObs").value.trim(),
+      },
+      areaMedica: {
+        conforme: document.getElementById("chegadaAreaMedicaCheck").checked,
+        obs: document.getElementById("chegadaAreaMedicaObs").value.trim(),
+      },
+      verificacaoResultados: {
+        conforme: document.getElementById("chegadaVerificacaoResultadosCheck")
+          .checked,
+        obs: document
+          .getElementById("chegadaVerificacaoResultadosObs")
+          .value.trim(),
+      },
+    };
+  };
+
+  // Torna a função global se quiser usar em botões ou salvar no localStorage futuramente
+  window.coletarDadosChegada = coletarDadosChegada;
+
+  // #endregion Chegada
 
   // Exibe a aba inicial ao carregar a página
   showTab(currentTabIndex);

@@ -29,19 +29,21 @@
         <div class="tab active single-tab-content" id="dashboard-content">
           <h2>Relatório Detalhado</h2>
 
-          <!-- Relatório Pré-Prova -->
+          <!-- #region Relatório Pré-Prova -->
           <div class="report-section" id="relatorio-pre-prova">
             <h3>Pré-Prova / Registro</h3>
-            <h4>Checagem de Atletas</h4>
+            
+            <h4>Contagem de Atletas</h4>
             <ul id="report-atletas-checados"></ul>
+
             <h4>Verificações de Normas</h4>
             <p>
-              <strong>Transição Justa:</strong>
-              <span id="report-transicao-justa"></span>
+              <strong>Transição:</strong>
+              <span id="report-transicao"></span>
             </p>
             <p>
               <strong>Observações:</strong>
-              <textarea id="report-transicao-justa-obs" readonly></textarea>
+              <textarea id="report-transicao-obs" readonly></textarea>
             </p>
 
             <p>
@@ -86,8 +88,9 @@
             <h3>Informações Adicionais</h3>
             <textarea id="report-info-adicional-pre-prova" readonly></textarea>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Natação -->
+          <!-- #region Relatório Natação -->
           <div class="report-section" id="relatorio-natacao">
             <h3>Natação</h3>
             <p>
@@ -112,14 +115,16 @@
             <p>Descarte</p>
             <ul id="report-descarte"></ul>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Transição I -->
+          <!-- #region Relatório Transição I -->
           <div class="report-section" id="relatorio-transicao-i">
             <h2>Transição I</h2>
             <p>Dados da Transição I aparecerão aqui.</p>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Ciclismo -->
+          <!-- #region Relatório Ciclismo -->
           <div class="report-section" id="relatorio-ciclismo">
             <h2>Ciclismo</h2>
             <h3>Verificação da Prova</h3>
@@ -209,14 +214,16 @@
             <h4>Ajuda Externa</h4>
             <ul id="report-ajuda-externa-ciclismo"></ul>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Transição II -->
+          <!-- #region Relatório Transição II -->
           <div class="report-section" id="relatorio-transicao-ii">
             <h3>Transição II</h3>
             <p>Dados da Transição II aparecerão aqui.</p>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Corrida -->
+          <!-- #region Relatório Corrida -->
           <div class="report-section" id="relatorio-corrida">
             <h2>Corrida</h2>
             <h3>Verificação da Prova</h3>
@@ -293,8 +300,9 @@
             <h4>Atitude Antidesportiva</h4>
             <ul id="report-antidesportiva"></ul>
           </div>
+          <!-- #endregion -->
 
-          <!-- Relatório Pós-Prova -->
+          <!-- #region Relatório Pós-Prova -->
           <div class="report-section" id="relatorio-pos-prova">
             <h2>Pós-Prova</h2>
             <h3>Resultados</h3>
@@ -310,6 +318,7 @@
             <h3>Observações Finais</h3>
             <textarea id="report-observacoes-finais" readonly></textarea>
           </div>
+          <!-- #endregion -->
 
         </div>
 

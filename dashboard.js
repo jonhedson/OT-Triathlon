@@ -29,11 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- PRÉ-PROVA / REGISTRO ---
-    if (appData.preProva) {
-        displayList('report-atletas-checados', appData.preProva.atletasChecados);
+    if (triathlonAppData.preProva) {
+        // Lê os atletas checados do localStorage, se existir, senão usa do appData
+        let atletasChecados = [];
+        const atletasChecadosStorage = localStorage.getItem('atletasChecados');
+        if (atletasChecadosStorage) {
+            try {
+                atletasChecados = JSON.parse(atletasChecadosStorage);
+            } catch (e) {
+                atletasChecados = appData.preProva.atletasChecados || [];
+            }
+        } else {
+            atletasChecados = appData.preProva.atletasChecados || [];
+        }
+        displayList('report-atletas-checados', atletasChecados);
 
         displayTextAndCheckbox('report-transicao-justa', 'report-transicao-justa-obs', appData.preProva.transicaoJusta);
-        
+
         const racksCaixasText = appData.preProva.numBikeRacks && appData.preProva.numCaixas
             ? `Racks: ${appData.preProva.numBikeRacks}, Caixas: ${appData.preProva.numCaixas}`
             : 'N/A';
