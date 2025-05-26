@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Exemplo de exibição organizada
     relatorioDiv.innerHTML = `
-        <div class="section">
+        <div class="norm-checker">
           <h2>Pré-Prova</h2>
           <strong>Atletas Checados:</strong> <pre>${JSON.stringify(
             data.preProva.atletasChecados.length,
@@ -241,6 +241,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Função para salvar a transição (checkbox)
+  const salvarTransicaoCheck = () => {
+    const check = document.getElementById("transicaoCheck");
+    appData.preProva.transicao.checked = check.checked; // Salva no objeto
+    saveAppData(); // Salva no localStorage
+    console.log('Checkbox marcado');
+  };
+
+  // Função para salvar Observação da Transição(textarea)
+  const salvarTransicaoObs = () => {
+    const obsInput = document.getElementById("transicaoObs");
+    if (!obsInput) {
+      alert("Campo de observação da transição não encontrado.");
+      return;
+    }
+    const obs = obsInput.value.trim();
+    appData.preProva.transicao.obs = obs; // Salva no objeto
+    saveAppData(); // Salva no localStorage
+    obsInput.value = ""; // Limpa o campo
+    console.log('escrito e marcado');
+  };
+
   // Função para registrar número de racks
   const registrarRacks = () => {
     const numRacksInput = document.getElementById("numBikeRacksInput");
@@ -298,6 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.registrarRacks = registrarRacks;
   window.registrarCaixas = registrarCaixas;
   window.registrarCheckinHorario = registrarCheckinHorario;
+  window.salvarTransicaoCheck = salvarTransicaoCheck;
+  window.salvarTransicaoObs = salvarTransicaoObs;
 
   // #endregion Pre-Prova
 

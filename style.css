@@ -371,3 +371,33 @@ textarea::placeholder {
   from { opacity: 0.5; }
   to { opacity: 1; }
 }
+
+/* Estilos para as Tabs de Navegação */
+.tab-menu {
+  display: flex;
+  overflow-x: auto;
+  background: #166384;
+  padding: 0 0 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.tab-link {
+  flex: 1 0 auto;
+  background: none;
+  border-radius: 6px 6px 0 0;
+  border: whitesmoke solid 1px; 
+  color: #fff;
+  font-weight: 600;
+  padding: 4px 3px;
+  cursor: pointer;
+  font-size: .5em;
+  transition: background 0.2s, color 0.2s;
+}
+.tab-link.active,
+.tab-link:focus {
+  background: #fff;
+  color: #166384;
+  border-radius: 6px 6px 0 0;
+  outline: none;
+}

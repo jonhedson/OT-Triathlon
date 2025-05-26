@@ -17,6 +17,7 @@
 
   <body>
     <div class="app-container">
+      
       <!-- Header  -->
       <header class="app-header">
         <a href="index.html">
@@ -29,8 +30,20 @@
           />
         </a>
         <h1>Oficial Técnico Triathlon</h1>
-        <a href="dashboard.html" class="dashboard-link">Relatório</a>
+        <!--<a href="dashboard.html" class="dashboard-link">Relatório</a>-->
       </header>
+
+      <!-- Navegação de Abas -->
+      <nav class="tab-menu">
+        <button class="tab-link" data-tab="pre-prova">Pré-Prova</button>
+        <button class="tab-link" data-tab="natacao">Natação</button>
+        <button class="tab-link" data-tab="transicao-i">Transição I</button>
+        <button class="tab-link" data-tab="ciclismo">Ciclismo</button>
+        <button class="tab-link" data-tab="transicao-ii">Transição II</button>
+        <button class="tab-link" data-tab="corrida">Corrida</button>
+        <button class="tab-link" data-tab="chegada">Chegada</button>
+        <button class="tab-link" data-tab="relatorio">Relatório</button>
+      </nav>
 
       <div class="tabs-container">
         <!-- Navegação de Abas -->
@@ -60,7 +73,6 @@
               <span>Deslize para o lado</span>
               <span class="swipe-arrow">&#8594;</span>
             </div>
-
           </div>
         </div>
         <!-- #endregion Front Home -->
@@ -92,12 +104,17 @@
             <!-- Transição -->
             <div class="norm-checker">
               <h4>Transição</h4>
-              <input type="checkbox" id="transicaoCheck" />
+              <input
+              type="checkbox"
+              id="transicaoCheck"
+              onchange="salvarTransicaoCheck()"
+              />
               <label for="transicaoCheck">Conformidade</label>
               <textarea
-                id="transicaoObs"
-                placeholder="Observações sobre Transição..."
-                rows="2"
+              id="transicaoObs"
+              placeholder="Observações sobre Transição..."
+              rows="2"
+              onchange="salvarTransicaoObs()"
               ></textarea>
             </div>
 
@@ -913,7 +930,7 @@
         <!-- Corrida -->
         <div class="tab" id="corrida">
           <h2>Corrida</h2>
-          
+
           <div class="section">
             <h3>Verificação da Prova</h3>
             <div class="norm-checker">
@@ -1168,16 +1185,12 @@
         <!-- #region Relatório -->
 
         <div class="tab" id="relatorio">
-          <h2>Relatório</h2>
+          <h2>Relatório Geral</h2>
 
           <div class="section">
-            <h3>Relatório</h3>
-            <div class="norm-checker">
               <div>
-                <h4>Relatório de Dados do Triathlon</h4>
                 <div id="lsRelatorio"></div>
               </div>
-            </div>
           </div>
         </div>
         <!-- #endregion Relatório -->
