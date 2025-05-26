@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Voltas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for better content flow */
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        /* Custom styles for large numeric input, if needed */
+        .numeric-input {
+            font-size: 3rem; /* Larger font for easy visibility */
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.75rem; /* Rounded corners */
+            border: 2px solid #cbd5e1; /* Light gray border */
+            width: 100%; /* Full width within its container */
+            max-width: 300px; /* Max width for better aesthetics */
+        }
+        .btn-primary {
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+            padding: 1.5rem 2rem;
+            font-size: 2.25rem; /* Very large text for the button */
+            font-weight: 700;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .btn-primary:hover {
+            background-color: #4338ca; /* Darker indigo on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+        .btn-primary:active {
+            transform: translateY(0); /* Press effect */
+        }
+        .btn-secondary {
+            background-color: #6b7280; /* Gray */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.125rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #4b5563; /* Darker gray on hover */
+        }
+        .card {
+            background-color: white;
+            border-radius: 1.5rem; /* Large rounded corners for cards */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            padding: 2rem;
+        }
+        .lap-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed #e2e8f0; /* Dashed border for separation */
+        }
+        .lap-item:last-child {
+            border-bottom: none;
+        }
+        /* Styles for the virtual keyboard */
+        .keyboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns for numbers */
+            gap: 1rem; /* Space between buttons */
+            width: 100%;
+            max-width: 350px; /* Max width for the keyboard */
+            margin-top: 1.5rem;
+        }
+        .keyboard-button {
+            background-color: #e0e7ff; /* Light indigo */
+            color: #3730a3; /* Dark indigo text */
+            padding: 1.5rem 1rem;
+            font-size: 2rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none; /* Prevent text selection on tap */
+        }
+        .keyboard-button:hover {
+            background-color: #c7d2fe; /* Lighter indigo on hover */
+            transform: translateY(-1px);
+        }
+        .keyboard-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        .keyboard-button.action-button {
+            background-color: #a5b4fc; /* Medium indigo for action buttons */
+            color: #3730a3;
+        }
+        .keyboard-button.action-button:hover {
+            background-color: #818cf8; /* Darker medium indigo on hover */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .numeric-input {
+                font-size: 2rem;
+                padding: 0.75rem;
+            }
+            .btn-primary {
+                font-size: 1.75rem;
+                padding: 1rem 1.5rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .keyboard-grid {
+                gap: 0.75rem;
+                max-width: 300px;
+            }
+            .keyboard-button {
+                font-size: 1.5rem;
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+    <div class="container mx-auto p-4 max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div class="card flex flex-col items-center gap-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-4 text-center">Registro de Voltas</h1>
+
+            <div class="w-full flex flex-col items-center gap-4">
+                <label for="participantId" class="text-gray-700 text-lg font-semibold">Número do Participante:</label>
+                <input
+                    type="number"
+                    id="participantId"
+                    class="numeric-input focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:border-indigo-500 transition-all"
+                    placeholder="Ex: 101"
+                    inputmode="none"
+                    pattern="[0-9]*"
+                    autofocus
+                >
+                <p id="currentLapDisplay" class="text-xl font-medium text-gray-600 mt-2">
+                    Volta Atual: <span class="font-bold text-indigo-600">0</span>
+                </p>
+            </div>
+
+            <div id="virtualKeyboard" class="keyboard-grid">
+                <button class="keyboard-button" data-value="1">1</button>
+                <button class="keyboard-button" data-value="2">2</button>
+                <button class="keyboard-button" data-value="3">3</button>
+                <button class="keyboard-button" data-value="4">4</button>
+                <button class="keyboard-button" data-value="5">5</button>
+                <button class="keyboard-button" data-value="6">6</button>
+                <button class="keyboard-button" data-value="7">7</button>
+                <button class="keyboard-button" data-value="8">8</button>
+                <button class="keyboard-button" data-value="9">9</button>
+                <button class="keyboard-button action-button" data-action="clear">Limpar</button>
+                <button class="keyboard-button" data-value="0">0</button>
+                <button class="keyboard-button action-button" data-action="delete">Apagar</button>
+            </div>
+
+            <button
+                id="registerLapBtn"
+                class="btn-primary w-full max-w-xs mt-6"
+            >
+                Registrar Volta
+            </button>
+
+            <div id="messageBox" class="mt-4 p-3 bg-indigo-100 text-indigo-800 rounded-lg hidden w-full text-center"></div>
+        </div>
+
+        <div class="card flex flex-col gap-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">Histórico de Voltas</h2>
+            <div class="overflow-y-auto max-h-96 border border-gray-200 rounded-xl p-4">
+                <ul id="lapHistoryList" class="divide-y divide-gray-100">
+                    <li class="text-gray-500 text-center py-4" id="noHistoryMessage">Nenhuma volta registrada ainda.</li>
+                </ul>
+            </div>
+
+            <button
+                id="exportCsvBtn"
+                class="btn-secondary w-full max-w-xs mx-auto mt-4"
+            >
+                Exportar para CSV
+            </button>
+
+            <div class="text-sm text-gray-500 mt-4 text-center">
+                <p>ID do Usuário: <span id="userIdDisplay" class="font-mono text-gray-700 break-all">Carregando...</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Variáveis globais fornecidas pelo ambiente Canvas
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app;
+        let auth;
+        // let db; // Descomente para usar Firestore
+        let currentUserId = 'Carregando...';
+
+        const messageBox = document.getElementById('messageBox');
+
+        function showMessage(message, type = 'info') {
+            messageBox.textContent = message;
+            messageBox.className = `mt-4 p-3 rounded-lg w-full text-center ${type === 'error' ? 'bg-red-100 text-red-800' : 'bg-indigo-100 text-indigo-800'}`;
+            messageBox.classList.remove('hidden');
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        async function initializeFirebase() {
+            try {
+                if (Object.keys(firebaseConfig).length > 0) {
+                    app = initializeApp(firebaseConfig);
+                    auth = getAuth(app);
+                    // db = getFirestore(app); // Descomente para usar Firestore
+
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            currentUserId = user.uid;
+                            document.getElementById('userIdDisplay').textContent = currentUserId;
+                            console.log("Usuário autenticado:", user.uid);
+                            // Aqui você pode carregar dados do Firestore se necessário
+                        } else {
+                            currentUserId = crypto.randomUUID(); // Fallback for unauthenticated or anonymous users
+                            document.getElementById('userIdDisplay').textContent = currentUserId;
+                            console.log("Usuário não autenticado. Usando ID gerado:", currentUserId);
+                        }
+                    });
+
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        console.log("Autenticado com token personalizado.");
+                    } else {
+                        await signInAnonymously(auth);
+                        console.log("Autenticado anonimamente.");
+                    }
+                } else {
+                    console.warn("Firebase config não disponível. O aplicativo funcionará sem persistência de dados.");
+                    document.getElementById('userIdDisplay').textContent = 'Não conectado (offline)';
+                }
+            } catch (error) {
+                console.error("Erro ao inicializar Firebase ou autenticar:", error);
+                showMessage("Erro ao conectar com o serviço de dados.", 'error');
+                document.getElementById('userIdDisplay').textContent = 'Erro de conexão';
+            }
+        }
+
+        // --- Lógica do Aplicativo de Registro de Voltas ---
+        const participantIdInput = document.getElementById('participantId');
+        const registerLapBtn = document.getElementById('registerLapBtn');
+        const currentLapDisplay = document.querySelector('#currentLapDisplay span');
+        const lapHistoryList = document.getElementById('lapHistoryList');
+        const noHistoryMessage = document.getElementById('noHistoryMessage');
+        const exportCsvBtn = document.getElementById('exportCsvBtn');
+        const virtualKeyboard = document.getElementById('virtualKeyboard');
+
+        // Armazena as voltas por participante (ID -> número da volta)
+        const participantLaps = new Map(); // Usando Map para melhor performance e flexibilidade
+        // Armazena o histórico completo de todas as voltas registradas
+        const lapRecords = []; // Array de objetos { participantId, lapNumber, timestamp }
+
+        // Função para atualizar a exibição da volta atual
+        function updateCurrentLapDisplay() {
+            const id = participantIdInput.value.trim();
+            if (id && participantLaps.has(id)) {
+                currentLapDisplay.textContent = participantLaps.get(id);
+            } else {
+                currentLapDisplay.textContent = '0';
+            }
+        }
+
+        // Evento para atualizar a volta atual ao digitar o ID
+        participantIdInput.addEventListener('input', updateCurrentLapDisplay);
+
+        // Adiciona listeners para o teclado virtual
+        virtualKeyboard.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('keyboard-button')) {
+                const value = target.dataset.value;
+                const action = target.dataset.action;
+
+                if (value) {
+                    // Adiciona o número ao input
+                    participantIdInput.value += value;
+                } else if (action === 'clear') {
+                    // Limpa o input
+                    participantIdInput.value = '';
+                } else if (action === 'delete') {
+                    // Apaga o último caractere
+                    participantIdInput.value = participantIdInput.value.slice(0, -1);
+                }
+                updateCurrentLapDisplay(); // Atualiza a exibição da volta atual
+                participantIdInput.focus(); // Mantém o foco no input
+            }
+        });
+
+        // Evento de clique para registrar a volta
+        registerLapBtn.addEventListener('click', () => {
+            const participantId = participantIdInput.value.trim();
+
+            if (!participantId) {
+                showMessage("Por favor, insira o número do participante.", 'error');
+                participantIdInput.focus();
+                return;
+            }
+
+            let lapNumber = 1;
+            if (participantLaps.has(participantId)) {
+                lapNumber = participantLaps.get(participantId) + 1;
+            }
+            participantLaps.set(participantId, lapNumber);
+
+            const timestamp = new Date().toLocaleString('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            const newRecord = { participantId, lapNumber, timestamp };
+            lapRecords.unshift(newRecord); // Adiciona no início para mostrar os mais recentes primeiro
+
+            renderLapHistory();
+            updateCurrentLapDisplay(); // Atualiza a exibição da volta atual após o registro
+            showMessage(`Volta ${lapNumber} registrada para o participante ${participantId}!`);
+
+            // Limpa o campo e foca para o próximo registro
+            participantIdInput.value = '';
+            participantIdInput.focus();
+
+            // TODO: Adicionar lógica para salvar no Firestore aqui (usando 'db' e 'currentUserId')
+            // Exemplo (descomente e adapte):
+            /*
+            if (db && currentUserId !== 'Carregando...') {
+                try {
+                    // Para dados públicos (se for um app colaborativo)
+                    const publicCollectionRef = collection(db, `artifacts/${appId}/public/data/laps`);
+                    await addDoc(publicCollectionRef, {
+                        participantId: newRecord.participantId,
+                        lapNumber: newRecord.lapNumber,
+                        timestamp: newRecord.timestamp,
+                        userId: currentUserId // Quem registrou
+                    });
+                    console.log("Volta salva no Firestore!");
+
+                    // Para dados privados do usuário (se necessário)
+                    // const privateCollectionRef = collection(db, `artifacts/${appId}/users/${currentUserId}/myLaps`);
+                    // await addDoc(privateCollectionRef, newRecord);
+
+                } catch (e) {
+                    console.error("Erro ao salvar volta no Firestore: ", e);
+                    showMessage("Erro ao salvar dados online.", 'error');
+                }
+            }
+            */
+        });
+
+        // Função para renderizar o histórico de voltas
+        function renderLapHistory() {
+            lapHistoryList.innerHTML = ''; // Limpa a lista existente
+
+            if (lapRecords.length === 0) {
+                lapHistoryList.appendChild(noHistoryMessage);
+                noHistoryMessage.classList.remove('hidden');
+                return;
+            } else {
+                noHistoryMessage.classList.add('hidden');
+            }
+
+            lapRecords.forEach(record => {
+                const listItem = document.createElement('li');
+                listItem.className = 'lap-item';
+                listItem.innerHTML = `
+                    <div class="flex-grow">
+                        <span class="font-bold text-indigo-700 text-lg">Participante ${record.participantId}</span>
+                        <span class="text-gray-600 ml-2">Volta ${record.lapNumber}</span>
+                    </div>
+                    <span class="text-gray-500 text-sm">${record.timestamp}</span>
+                `;
+                lapHistoryList.appendChild(listItem);
+            });
+        }
+
+        // Função para exportar dados para CSV
+        exportCsvBtn.addEventListener('click', () => {
+            if (lapRecords.length === 0) {
+                showMessage("Não há dados para exportar.", 'error');
+                return;
+            }
+
+            const headers = ["ID Participante", "Número da Volta", "Timestamp"];
+            const csvRows = [
+                headers.join(';') // Cabeçalhos separados por ponto e vírgula
+            ];
+
+            lapRecords.forEach(record => {
+                const row = [
+                    record.participantId,
+                    record.lapNumber,
+                    `"${record.timestamp}"` // Aspas para timestamps com vírgulas
+                ].join(';');
+                csvRows.push(row);
+            });
+
+            const csvString = csvRows.join('\n');
+            const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `registro_voltas_${new Date().toISOString().slice(0,10)}.csv`;
+            link.click();
+            URL.revokeObjectURL(link.href); // Libera o objeto URL
+
+            showMessage("Dados exportados para CSV!");
+        });
+
+        // Inicializa o Firebase ao carregar a página
+        window.onload = initializeFirebase;
+
+        // Renderiza o histórico inicial (vazio)
+        renderLapHistory();
+    </script>
+</body>
+</html>
