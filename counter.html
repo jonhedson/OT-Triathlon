@@ -9,43 +9,42 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light blue-gray background */
+            background-color: #f0f4f8;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align to top for better content flow */
+            align-items: flex-start;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 1rem;
             box-sizing: border-box;
         }
-        /* Custom styles for large numeric input, if needed */
         .numeric-input {
-            font-size: 3rem; /* Larger font for easy visibility */
+            font-size: 3rem;
             text-align: center;
             padding: 1rem;
-            border-radius: 0.75rem; /* Rounded corners */
-            border: 2px solid #cbd5e1; /* Light gray border */
-            width: 100%; /* Full width within its container */
-            max-width: 300px; /* Max width for better aesthetics */
+            border-radius: 0.75rem;
+            border: 2px solid #cbd5e1;
+            width: 100%;
+            max-width: 300px;
         }
         .btn-primary {
-            background-color: #4f46e5; /* Indigo */
+            background-color: #4f46e5;
             color: white;
             padding: 1.5rem 2rem;
-            font-size: 2.25rem; /* Very large text for the button */
+            font-size: 2.25rem;
             font-weight: 700;
-            border-radius: 1.5rem; /* More rounded corners */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             transition: background-color 0.3s ease, transform 0.1s ease;
         }
         .btn-primary:hover {
-            background-color: #4338ca; /* Darker indigo on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #4338ca;
+            transform: translateY(-2px);
         }
         .btn-primary:active {
-            transform: translateY(0); /* Press effect */
+            transform: translateY(0);
         }
         .btn-secondary {
-            background-color: #6b7280; /* Gray */
+            background-color: #6b7280;
             color: white;
             padding: 0.75rem 1.5rem;
             font-size: 1.125rem;
@@ -54,12 +53,12 @@
             transition: background-color 0.3s ease;
         }
         .btn-secondary:hover {
-            background-color: #4b5563; /* Darker gray on hover */
+            background-color: #4b5563;
         }
         .card {
             background-color: white;
-            border-radius: 1.5rem; /* Large rounded corners for cards */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
             padding: 2rem;
         }
         .lap-item {
@@ -67,23 +66,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 0;
-            border-bottom: 1px dashed #e2e8f0; /* Dashed border for separation */
+            border-bottom: 1px dashed #e2e8f0;
         }
         .lap-item:last-child {
             border-bottom: none;
         }
-        /* Styles for the virtual keyboard */
         .keyboard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns for numbers */
-            gap: 1rem; /* Space between buttons */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
             width: 100%;
-            max-width: 350px; /* Max width for the keyboard */
+            max-width: 350px;
             margin-top: 1.5rem;
         }
         .keyboard-button {
-            background-color: #e0e7ff; /* Light indigo */
-            color: #3730a3; /* Dark indigo text */
+            background-color: #e0e7ff;
+            color: #3730a3;
             padding: 1.5rem 1rem;
             font-size: 2rem;
             font-weight: 600;
@@ -94,10 +92,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            user-select: none; /* Prevent text selection on tap */
+            user-select: none;
         }
         .keyboard-button:hover {
-            background-color: #c7d2fe; /* Lighter indigo on hover */
+            background-color: #c7d2fe;
             transform: translateY(-1px);
         }
         .keyboard-button:active {
@@ -105,16 +103,31 @@
             box-shadow: none;
         }
         .keyboard-button.action-button {
-            background-color: #a5b4fc; /* Medium indigo for action buttons */
+            background-color: #a5b4fc;
             color: #3730a3;
         }
         .keyboard-button.action-button:hover {
-            background-color: #818cf8; /* Darker medium indigo on hover */
+            background-color: #818cf8;
+        }
+        /* Canvas specific styling */
+        #lapChartCanvas {
+            background-color: #f8fafc; /* Light gray background for the canvas */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            width: 100%; /* Ensure canvas takes full width */
+            max-width: 400px; /* Limit max width for better readability */
+            height: 250px; /* Fixed height for consistency */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
         }
 
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
+            }
+            .container {
+                gap: 2rem;
             }
             .numeric-input {
                 font-size: 2rem;
@@ -135,12 +148,14 @@
                 font-size: 1.5rem;
                 padding: 1rem 0.5rem;
             }
+            #lapChartCanvas {
+                height: 200px; /* Adjust height for smaller screens */
+            }
         }
     </style>
 </head>
 <body class="selection:bg-indigo-300 selection:text-indigo-900">
-    <div class="container mx-auto p-4 max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-
+    <div class="container mx-auto p-4 max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6">
         <div class="card flex flex-col items-center gap-6">
             <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-4 text-center">Registro de Voltas</h1>
 
@@ -193,6 +208,9 @@
                 </ul>
             </div>
 
+            <h3 class="text-2xl font-bold text-gray-800 mt-6 mb-2 text-center">Voltas por Participante</h3>
+            <canvas id="lapChartCanvas" width="400" height="250"></canvas>
+
             <button
                 id="exportCsvBtn"
                 class="btn-secondary w-full max-w-xs mx-auto mt-4"
@@ -211,14 +229,13 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         // import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Variáveis globais fornecidas pelo ambiente Canvas
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let app;
         let auth;
-        // let db; // Descomente para usar Firestore
+        // let db;
         let currentUserId = 'Carregando...';
 
         const messageBox = document.getElementById('messageBox');
@@ -229,7 +246,7 @@
             messageBox.classList.remove('hidden');
             setTimeout(() => {
                 messageBox.classList.add('hidden');
-            }, 3000); // Hide after 3 seconds
+            }, 3000);
         }
 
         async function initializeFirebase() {
@@ -237,16 +254,15 @@
                 if (Object.keys(firebaseConfig).length > 0) {
                     app = initializeApp(firebaseConfig);
                     auth = getAuth(app);
-                    // db = getFirestore(app); // Descomente para usar Firestore
+                    // db = getFirestore(app);
 
                     onAuthStateChanged(auth, (user) => {
                         if (user) {
                             currentUserId = user.uid;
                             document.getElementById('userIdDisplay').textContent = currentUserId;
                             console.log("Usuário autenticado:", user.uid);
-                            // Aqui você pode carregar dados do Firestore se necessário
                         } else {
-                            currentUserId = crypto.randomUUID(); // Fallback for unauthenticated or anonymous users
+                            currentUserId = crypto.randomUUID();
                             document.getElementById('userIdDisplay').textContent = currentUserId;
                             console.log("Usuário não autenticado. Usando ID gerado:", currentUserId);
                         }
@@ -279,10 +295,12 @@
         const exportCsvBtn = document.getElementById('exportCsvBtn');
         const virtualKeyboard = document.getElementById('virtualKeyboard');
 
-        // Armazena as voltas por participante (ID -> número da volta)
-        const participantLaps = new Map(); // Usando Map para melhor performance e flexibilidade
-        // Armazena o histórico completo de todas as voltas registradas
-        const lapRecords = []; // Array de objetos { participantId, lapNumber, timestamp }
+        // Canvas elements
+        const lapChartCanvas = document.getElementById('lapChartCanvas');
+        const ctx = lapChartCanvas.getContext('2d');
+
+        const participantLaps = new Map();
+        const lapRecords = [];
 
         // Função para atualizar a exibição da volta atual
         function updateCurrentLapDisplay() {
@@ -297,6 +315,13 @@
         // Evento para atualizar a volta atual ao digitar o ID
         participantIdInput.addEventListener('input', updateCurrentLapDisplay);
 
+        // Impedir teclado nativo em mobile ao focar no input
+        participantIdInput.addEventListener('focus', (event) => {
+            event.preventDefault();
+            participantIdInput.blur(); // Remove o foco imediatamente para evitar o teclado nativo
+        });
+
+
         // Adiciona listeners para o teclado virtual
         virtualKeyboard.addEventListener('click', (event) => {
             const target = event.target;
@@ -305,17 +330,14 @@
                 const action = target.dataset.action;
 
                 if (value) {
-                    // Adiciona o número ao input
                     participantIdInput.value += value;
                 } else if (action === 'clear') {
-                    // Limpa o input
                     participantIdInput.value = '';
                 } else if (action === 'delete') {
-                    // Apaga o último caractere
                     participantIdInput.value = participantIdInput.value.slice(0, -1);
                 }
-                updateCurrentLapDisplay(); // Atualiza a exibição da volta atual
-                participantIdInput.focus(); // Mantém o foco no input
+                updateCurrentLapDisplay();
+                // Não precisa de focus() aqui, o focus já foi prevenido
             }
         });
 
@@ -325,8 +347,7 @@
 
             if (!participantId) {
                 showMessage("Por favor, insira o número do participante.", 'error');
-                participantIdInput.focus();
-                return;
+                return; // Não chama focus, pois o foco está sendo gerenciado pelo teclado virtual
             }
 
             let lapNumber = 1;
@@ -345,46 +366,20 @@
             });
 
             const newRecord = { participantId, lapNumber, timestamp };
-            lapRecords.unshift(newRecord); // Adiciona no início para mostrar os mais recentes primeiro
+            lapRecords.unshift(newRecord);
 
             renderLapHistory();
-            updateCurrentLapDisplay(); // Atualiza a exibição da volta atual após o registro
+            updateCurrentLapDisplay();
+            drawChart(); // Atualiza o gráfico após cada registro de volta
             showMessage(`Volta ${lapNumber} registrada para o participante ${participantId}!`);
 
-            // Limpa o campo e foca para o próximo registro
             participantIdInput.value = '';
-            participantIdInput.focus();
-
-            // TODO: Adicionar lógica para salvar no Firestore aqui (usando 'db' e 'currentUserId')
-            // Exemplo (descomente e adapte):
-            /*
-            if (db && currentUserId !== 'Carregando...') {
-                try {
-                    // Para dados públicos (se for um app colaborativo)
-                    const publicCollectionRef = collection(db, `artifacts/${appId}/public/data/laps`);
-                    await addDoc(publicCollectionRef, {
-                        participantId: newRecord.participantId,
-                        lapNumber: newRecord.lapNumber,
-                        timestamp: newRecord.timestamp,
-                        userId: currentUserId // Quem registrou
-                    });
-                    console.log("Volta salva no Firestore!");
-
-                    // Para dados privados do usuário (se necessário)
-                    // const privateCollectionRef = collection(db, `artifacts/${appId}/users/${currentUserId}/myLaps`);
-                    // await addDoc(privateCollectionRef, newRecord);
-
-                } catch (e) {
-                    console.error("Erro ao salvar volta no Firestore: ", e);
-                    showMessage("Erro ao salvar dados online.", 'error');
-                }
-            }
-            */
+            // Não chama focus aqui, pois o foco já foi prevenido
         });
 
         // Função para renderizar o histórico de voltas
         function renderLapHistory() {
-            lapHistoryList.innerHTML = ''; // Limpa a lista existente
+            lapHistoryList.innerHTML = '';
 
             if (lapRecords.length === 0) {
                 lapHistoryList.appendChild(noHistoryMessage);
@@ -408,6 +403,51 @@
             });
         }
 
+        // Função para desenhar o gráfico de barras
+        function drawChart() {
+            ctx.clearRect(0, 0, lapChartCanvas.width, lapChartCanvas.height); // Limpa o canvas
+
+            if (participantLaps.size === 0) {
+                ctx.fillStyle = '#6b7280';
+                ctx.font = '16px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText('Nenhum dado para o gráfico ainda.', lapChartCanvas.width / 2, lapChartCanvas.height / 2);
+                return;
+            }
+
+            const padding = 20;
+            const barWidth = 30;
+            const maxLaps = Math.max(...Array.from(participantLaps.values()));
+
+            // Se maxLaps for 0, definimos como 1 para evitar divisão por zero
+            const scale = (maxLaps === 0) ? 0 : (lapChartCanvas.height - 2 * padding) / maxLaps;
+
+            let xOffset = padding;
+
+            ctx.fillStyle = '#4f46e5'; // Cor das barras (Indigo)
+            ctx.font = '12px Inter';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Desenha o gráfico para cada participante
+            participantLaps.forEach((laps, participantId) => {
+                const barHeight = laps * scale;
+                const y = lapChartCanvas.height - padding - barHeight;
+
+                ctx.fillRect(xOffset, y, barWidth, barHeight); // Desenha a barra
+
+                // Desenha a contagem de voltas acima da barra
+                ctx.fillStyle = '#3730a3';
+                ctx.fillText(laps, xOffset + barWidth / 2, y - 10);
+
+                // Desenha o ID do participante abaixo da barra
+                ctx.fillStyle = '#4b5563';
+                ctx.fillText(participantId, xOffset + barWidth / 2, lapChartCanvas.height - padding + 15);
+
+                xOffset += barWidth + 10; // Espaçamento entre as barras
+            });
+        }
+
         // Função para exportar dados para CSV
         exportCsvBtn.addEventListener('click', () => {
             if (lapRecords.length === 0) {
@@ -417,14 +457,14 @@
 
             const headers = ["ID Participante", "Número da Volta", "Timestamp"];
             const csvRows = [
-                headers.join(';') // Cabeçalhos separados por ponto e vírgula
+                headers.join(';')
             ];
 
             lapRecords.forEach(record => {
                 const row = [
                     record.participantId,
                     record.lapNumber,
-                    `"${record.timestamp}"` // Aspas para timestamps com vírgulas
+                    `"${record.timestamp}"`
                 ].join(';');
                 csvRows.push(row);
             });
@@ -435,16 +475,17 @@
             link.href = URL.createObjectURL(blob);
             link.download = `registro_voltas_${new Date().toISOString().slice(0,10)}.csv`;
             link.click();
-            URL.revokeObjectURL(link.href); // Libera o objeto URL
+            URL.revokeObjectURL(link.href);
 
             showMessage("Dados exportados para CSV!");
         });
 
-        // Inicializa o Firebase ao carregar a página
-        window.onload = initializeFirebase;
-
-        // Renderiza o histórico inicial (vazio)
-        renderLapHistory();
+        // Inicializa o Firebase e o gráfico ao carregar a página
+        window.onload = () => {
+            initializeFirebase();
+            renderLapHistory(); // Renderiza o histórico inicial
+            drawChart(); // Desenha o gráfico inicial
+        };
     </script>
 </body>
 </html>
