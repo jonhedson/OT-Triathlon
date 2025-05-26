@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Carrega os dados do localStorage
-  const appData = JSON.parse(localStorage.getItem('triathlonAppData')) || {};
+  const appData = JSON.parse(localStorage.getItem('triData')) || {};
 
   // Função para exibir dados de lista
   const displayList = (listId, dataArray) => {

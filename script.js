@@ -6,47 +6,152 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentTabIndex = 0; // Começa na primeira aba (Home)
 
+  // #region Loading e Inicialização
+// Lê os dados do localStorage
+  const data = JSON.parse(localStorage.getItem("triData"));
+  const relatorioDiv = document.getElementById("lsRelatorio");
+
+  if (!data) {
+    relatorioDiv.innerHTML = "<p>Nenhum dado encontrado no localStorage.</p>";
+  } else {
+    // Exemplo de exibição organizada
+    relatorioDiv.innerHTML = `
+        <div class="section">
+          <h2>Pré-Prova</h2>
+          <strong>Atletas Checados:</strong> <pre>${JSON.stringify(
+            data.preProva.atletasChecados.length,
+            null,
+            2
+          )}</pre>
+          <strong>Transição:</strong> <pre>${JSON.stringify(
+            data.preProva.transicao,
+            null,
+            2
+          )}</pre>
+          <strong>Racks:</strong> ${data.preProva.numRacks || "-"}<br>
+          <strong>Caixas:</strong> ${data.preProva.numCaixas || "-"}<br>
+          <strong>Bike Racks Obs:</strong> ${
+            data.preProva.bikeRacksObs || "-"
+          }<br>
+          <strong>Bike Rack Triatletas:</strong> <pre>${JSON.stringify(
+            data.preProva.bikeRackTriatletas,
+            null,
+            2
+          )}</pre>
+          <strong>Área Monte/Desmonte:</strong> <pre>${JSON.stringify(
+            data.preProva.areaMonteDesmonte,
+            null,
+            2
+          )}</pre>
+          <strong>Check-in Horário:</strong> ${
+            data.preProva.checkinHorario || "-"
+          }<br>
+          <strong>Total Atletas Check-in:</strong> ${
+            data.preProva.totalAtletasCheckin || "-"
+          }<br>
+          <strong>Obs Check-in:</strong> ${
+            data.preProva.checkinHorarioObs || "-"
+          }<br>
+          <strong>Info Adicional:</strong> ${
+            data.preProva.infoAdicional || "-"
+          }<br>
+        </div>
+      `;
+  }
+  // #endregion Loading
+
   // #region Armazenamento Local
   // Objeto para armazenar todos os dados do aplicativo
-    let appData = JSON.parse(localStorage.getItem('triathlonAppData')) || {
-        preProva: {
-            atletasChecados: [],
-            transicao: { checked: false, obs: '' },
-            numRacks: '',
-            numCaixas: '',
-            bikeRacksObs: '',
-            bikeRackTriatletas: { checked: false, obs: '' },
-            areaMonteDesmonte: { checked: false, obs: '' },
-            checkinHorario: '',
-            totalAtletasCheckin: '',
-            checkinHorarioObs: '',
-            infoAdicional: ''
-        },
-        natacao: {
-            primeiroAtleta: '',
-            ultimoAtleta: '',
-            desistentes: [],
-            punicoes: {
-                corteBoia: [],
-                largadaFalsa: [],
-                contato: [],
-                ajudaExterna: [],
-                descarte: []
-            }
-        },
-        transicaoI: {},
-        ciclismo: {},
-        transicaoII: {},
-        corrida: {}
-    };
+  let appData = JSON.parse(localStorage.getItem("triData")) || {
+    preProva: {
+      atletasChecados: [],
+      transicao: { checked: false, obs: "" },
+      numRacks: "",
+      numCaixas: "",
+      bikeRacksObs: "",
+      bikeRackTriatletas: { checked: false, obs: "" },
+      areaMonteDesmonte: { checked: false, obs: "" },
+      checkinHorario: "",
+      totalAtletasCheckin: "",
+      checkinHorarioObs: "",
+      infoAdicional: "",
+    },
+    natacao: {
+      primeiroAtleta: "",
+      ultimoAtleta: "",
+      desistentes: [],
+      punicoes: {
+        corteBoia: [],
+        largadaFalsa: [],
+        contato: [],
+        ajudaExterna: [],
+        descarte: [],
+      },
+    },
+    transicaoI: {
+      primeiroEntrada: "",
+      primeiroSaida: "",
+      ultimoEntrada: "",
+      ultimoSaida: "",
+      desistentes: [],
+      punicoes: {
+        transicaoI: [],
+        bikeRackTriatletas: [],
+        areaMonteDesmonte: [],
+      },
+    },
+    ciclismo: {
+      primeiroAtleta: "",
+      ultimoAtleta: "",
+      desistentes: [],
+      punicoes: {
+        vacuo: [],
+        andarClipado: [],
+        descarte: [],
+        ajudaExterna: [],
+        antidesportiva: [],
+      },
+    },
+    transicaoII: {
+      primeiroEntrada: "",
+      primeiroSaida: "",
+      ultimoEntrada: "",
+      ultimoSaida: "",
+      desistentes: [],
+      punicoes: {
+        transicaoII: [],
+        bikeRackTriatletas: [],
+        areaMonteDesmonte: [],
+      },
+    },
+    corrida: {
+      primeiroAtleta: "",
+      ultimoAtleta: "",
+      desistentes: [],
+      punicoes: {
+        vacuo: [],
+        descarte: [],
+        ajudaExterna: [],
+        antidesportiva: [],
+      },
+    },
+    chegada: {
+      pontosControle: { checked: false, obs: "" },
+      backup: { checked: false, obs: "" },
+      faixaChegada: { checked: false, obs: "" },
+      areaDispersao: { checked: false, obs: "" },
+      areaMedica: { checked: false, obs: "" },
+      verificacaoResultados: { checked: false, obs: "" },
+    },
+  };
 
-    // Função para salvar os dados no localStorage
-    const saveAppData = () => {
-        localStorage.setItem('triathlonAppData', JSON.stringify(appData));
-    };
-    // #endregion Armazenamento Local
+  // Função para salvar os dados no localStorage
+  const saveAppData = () => {
+    localStorage.setItem("triData", JSON.stringify(appData));
+  };
+  // #endregion Armazenamento Local
 
-
+  // #region Mostrar Aba
   // Função para mostrar a aba correta
   const showTab = (index) => {
     // Primeiro, ocultamos todas as abas e removemos a classe 'active'
@@ -115,6 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  
+  // #endregion Mostrar Aba
 
   //#region Pre-Prova
   // Funções para a aba de Pré-Prova
@@ -125,6 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (atleta) {
       adicionarAtletaALista(lista, atleta);
+      // Salva no appData e localStorage
+      appData.preProva.atletasChecados.push(atleta);
+      saveAppData();
       input.value = ""; // Limpa o campo
     } else {
       alert("Por favor, digite o número do atleta.");

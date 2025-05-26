@@ -14,6 +14,7 @@
       as="style"
     />
   </head>
+
   <body>
     <div class="app-container">
       <!-- Header  -->
@@ -34,6 +35,7 @@
       <div class="tabs-container">
         <!-- Navegação de Abas -->
 
+        <!-- #region Front Home -->
         <!-- Front Home -->
         <div class="tab active" id="home">
           <div class="home-content">
@@ -52,16 +54,23 @@
               informações cruciais, aplicar punições e monitorar o progresso dos
               atletas de forma eficiente e precisa.
             </p>
-            <p>Inicie selecionando a etapa de prova desejada.</p>
+
+            <div class="swipe-hint">
+              <span class="swipe-arrow">&#8592;</span>
+              <span>Deslize para o lado</span>
+              <span class="swipe-arrow">&#8594;</span>
+            </div>
+
           </div>
         </div>
+        <!-- #endregion Front Home -->
 
-        <!-- Pré-Prova -->
+        <!-- #region  Pré-Prova -->
+
         <div class="tab" id="pre-prova">
           <h2>Pré-Prova / Registro</h2>
 
           <div class="section">
-
             <!-- Check-in -->
             <div class="norm-checker">
               <h3>Check-in</h3>
@@ -96,7 +105,7 @@
             <div class="norm-checker">
               <h4>Numeração</h4>
 
-              <label for="numBikeRacksInput">Racks: </label>
+              <label for="numBikeRacksInput">Racks :</label>
               <input
                 type="number"
                 id="numBikeRacksInput"
@@ -106,7 +115,7 @@
               <button onclick="registrarRacks()">Registrar</button>
               <p id="racksInfo"></p>
 
-              <label for="numCaixasInput">Caixas: </label>
+              <label for="numCaixasInput">Caixas:</label>
               <input
                 type="number"
                 id="numCaixasInput"
@@ -139,55 +148,76 @@
           </div>
 
           <!-- Area de Monte e Desmonte -->
-          <div class="norm-checker">
-            <h4>Área de Monte e Desmonte</h4>
-            <input type="checkbox" id="areaMonteDesmonteCheck" />
-            <label for="areaMonteDesmonteCheck">Conformidade</label>
-            <textarea
-              id="areaMonteDesmonteObs"
-              placeholder="Observações sobre área de monte/desmonte..."
-              rows="2"
-            ></textarea>
+          <div class="section">
+            <h3>Área de Monte e Desmonte</h3>
+
+            <div class="norm-checker">
+              <h4>Área de Monte e Desmonte</h4>
+
+              <input type="checkbox" id="areaMonteDesmonteCheck" />
+              <label for="areaMonteDesmonteCheck">Conformidade</label>
+
+              <textarea
+                id="areaMonteDesmonteObs"
+                placeholder="Observações sobre área de monte/desmonte..."
+                rows="2"
+              >
+              </textarea>
+            </div>
+
+            <!-- Check-in Horario/Atletas -->
+            <div class="section">
+              <h3>Check-in Horário/Atletas</h3>
+
+              <div class="norm-checker">
+                <h4>Bike check-in compatível com número de atletas</h4>
+
+                <label for="checkinHorarioInput">Horário : </label>
+                <input
+                  type="number"
+                  id="checkinHorarioInput"
+                  placeholder="Horário (ex: 08:00-09:00)"
+                />
+                <br />
+                <br />
+                <label for="totalAtletasCheckinInput">Total de Atletas:</label>
+                <input
+                  type="number"
+                  id="totalAtletasCheckinInput"
+                  placeholder="Total de Atletas"
+                />
+
+                <button onclick="registrarCheckinHorario()">Registrar</button>
+
+                <p id="checkinHorarioInfo"></p>
+                <textarea
+                  id="checkinHorarioObs"
+                  placeholder="Observações sobre horário de check-in..."
+                  rows="2"
+                >
+                </textarea>
+              </div>
+            </div>
           </div>
 
-          <div class="norm-checker">
-            <h4>Bike check-in compatível com número de atletas</h4>
-            
-            <label for="checkinHorarioInput">Horário:</label>
-            <input
-              type="number"
-              id="checkinHorarioInput"
-              placeholder="Horário (ex: 08:00-09:00)"
-            />
-
-            <label for="totalAtletasCheckinInput">Total de Atletas:</label>
-            <input
-              type="number"
-              id="totalAtletasCheckinInput"
-              placeholder="Total de Atletas"
-            />
-
-            <button onclick="registrarCheckinHorario()">Registrar</button>
-            
-            <p id="checkinHorarioInfo"></p>
-            <textarea
-              id="checkinHorarioObs"
-              placeholder="Observações sobre horário de check-in..."
-              rows="2"
-            ></textarea>
-          </div>
-
+          <!-- Info Adicionais -->
           <div class="section">
             <h3>Informações Adicionais</h3>
-            
-            <label for="infoAdicionalPreProva">Observações Gerais:</label>
-            <textarea
-              placeholder="Observações importantes antes da prova..."
-              rows="4"
-              id="infoAdicionalPreProva"
-            ></textarea>
+
+            <div class="norm-checker">
+              <label for="infoAdicionalPreProva">Observações Gerais:</label>
+              <br />
+              <textarea
+                placeholder="Observações importantes antes da prova..."
+                rows="4"
+                id="infoAdicionalPreProva"
+              ></textarea>
+            </div>
           </div>
         </div>
+        <!-- #endregion Pre-Prova -->
+
+        <!-- #region Natação -->
 
         <!-- Natação -->
         <div class="tab" id="natacao">
@@ -293,6 +323,9 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Natação -->
+
+        <!-- #region Transição I -->
 
         <!-- Transição I -->
         <div class="tab" id="transicao-i">
@@ -481,6 +514,9 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Transição I -->
+
+        <!-- #region Ciclismo -->
 
         <!-- Ciclismo -->
         <div class="tab" id="ciclismo">
@@ -679,6 +715,9 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Ciclismo -->
+
+        <!-- #region Transição II -->
 
         <!-- Transição II -->
         <div class="tab" id="transicao-ii">
@@ -867,12 +906,14 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Transição II -->
+
+        <!-- #region Corrida -->
 
         <!-- Corrida -->
         <div class="tab" id="corrida">
           <h2>Corrida</h2>
-          <p>Acompanhamento e verificações da etapa de Corrida.</p>
-
+          
           <div class="section">
             <h3>Verificação da Prova</h3>
             <div class="norm-checker">
@@ -1050,6 +1091,9 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Corrida -->
+
+        <!-- #region Chegada -->
 
         <!-- Chegada -->
         <div class="tab" id="chegada">
@@ -1119,6 +1163,24 @@
             </div>
           </div>
         </div>
+        <!-- #endregion Chegada -->
+
+        <!-- #region Relatório -->
+
+        <div class="tab" id="relatorio">
+          <h2>Relatório</h2>
+
+          <div class="section">
+            <h3>Relatório</h3>
+            <div class="norm-checker">
+              <div>
+                <h4>Relatório de Dados do Triathlon</h4>
+                <div id="lsRelatorio"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #endregion Relatório -->
       </div>
 
       <nav class="tab-navigation">
